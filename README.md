@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.6+](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/)
 
-[English](README_EN.md)
+[English](README_EN.md) | [Español](README_ES.md) | [Français](README_FR.md) | [Deutsch](README_DE.md) | [日本語](README_JA.md) | [한국어](README_KO.md) | [Português](README_PT.md) | [Русский](README_RU.md) | [العربية](README_AR.md) | [Italiano](README_IT.md) | [Nederlands](README_NL.md)
 
 基于本地 66 卷中文和合本圣经纯文本文件，提供经文查询、检索和引用功能。零依赖，开箱即用。
 
@@ -404,6 +404,16 @@ python3 scripts/bible_search.py search 以马内利
 bible-skill/
 ├── README.md                     ← 本文件（中文安装 + 使用文档）
 ├── README_EN.md                  ← English documentation
+├── README_ES.md                  ← Documentación en Español
+├── README_FR.md                  ← Documentation en Français
+├── README_DE.md                  ← Dokumentation auf Deutsch
+├── README_JA.md                  ← 日本語ドキュメント
+├── README_KO.md                  ← 한국어 문서
+├── README_PT.md                  ← Documentação em Português
+├── README_RU.md                  ← Документация на Русском
+├── README_AR.md                  ← التوثيق بالعربية
+├── README_IT.md                  ← Documentazione in Italiano
+├── README_NL.md                  ← Nederlandse documentatie
 ├── LICENSE                       ← MIT 开源协议
 ├── SKILL.md                      ← Hermes Agent 技能文档（含详细手动安装指南）
 ├── .gitignore

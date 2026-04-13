@@ -1,110 +1,110 @@
-# Chinese Bible Search Skill
+# Chinees Bijbel Zoekhulpmiddel
+
+[中文](README.md) | [English](README_EN.md) | Nederlands
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.6+](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/)
 
-[中文文档](README.md) | [Español](README_ES.md) | [Français](README_FR.md) | [Deutsch](README_DE.md) | [日本語](README_JA.md) | [한국어](README_KO.md) | [Português](README_PT.md) | [Русский](README_RU.md) | [العربية](README_AR.md) | [Italiano](README_IT.md) | [Nederlands](README_NL.md)
-
-A local, offline Chinese Bible (Union Version / 和合本) search tool. Query verses by book name, chapter, verse, or keyword — zero dependencies, ready to use.
+Een lokale, offline Chinees Bijbel (Union Version / 和合本) zoekhulpmiddel. Zoek verzen op boeknaam, hoofdstuk, vers of trefwoord — geen afhankelijkheden, direct klaar voor gebruik.
 
 ---
 
-## Table of Contents
+## Inhoudsopgave
 
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-  - [Option 1: One-Click Install (Recommended)](#option-1-one-click-install-recommended)
-  - [Option 2: Manual Install](#option-2-manual-install)
-  - [Option 3: Clone & Run](#option-3-clone--run)
-- [Usage](#usage)
-  - [1. List All 66 Books](#1-list-all-66-books)
-  - [2. View Book Info](#2-view-book-info)
-  - [3. View an Entire Chapter](#3-view-an-entire-chapter)
-  - [4. View a Single Verse](#4-view-a-single-verse)
-  - [5. View a Verse Range](#5-view-a-verse-range)
-  - [6. Full-Text Search](#6-full-text-search)
-- [Book Name Abbreviations](#book-name-abbreviations)
-- [Data Format](#data-format)
-- [File Structure](#file-structure)
-- [Using with AI Agents](#using-with-ai-agents)
+- [Functies](#functies)
+- [Vereisten](#vereisten)
+- [Installatie](#installatie)
+  - [Optie 1: Één-klik installatie (Aanbevolen)](#optie-1-één-klik-installatie-aanbevolen)
+  - [Optie 2: Handmatige installatie](#optie-2-handmatige-installatie)
+  - [Optie 3: Klonen & uitvoeren](#optie-3-klonen--uitvoeren)
+- [Gebruik](#gebruik)
+  - [1. Alle 66 boeken weergeven](#1-alle-66-boeken-weergeven)
+  - [2. Boekinformatie bekijken](#2-boekinformatie-bekijken)
+  - [3. Een heel hoofdstuk bekijken](#3-een-heel-hoofdstuk-bekijken)
+  - [4. Eén vers bekijken](#4-één-vers-bekijken)
+  - [5. Een versbereik bekijken](#5-een-versbereik-bekijken)
+  - [6. Volledige tekst doorzoeken](#6-volledige-tekst-doorzoeken)
+- [Boeknaam-afkortingen](#boeknaam-afkortingen)
+- [Gegevensformaat](#gegevensformaat)
+- [Bestandsstructuur](#bestandsstructuur)
+- [Gebruik met AI-agents](#gebruik-met-ai-agents)
   - [Claude Code](#claude-code)
   - [Hermes Agent](#hermes-agent)
   - [OpenClaw](#openclaw)
 - [FAQ](#faq)
-- [License](#license)
+- [Licentie](#licentie)
 
 ---
 
-## Features
+## Functies
 
-- 📖 List all 66 books of the Bible
-- 🔍 Query verses by full name or abbreviation (whole chapter, single verse, verse range)
-- 🗂️ View book info (chapter count, verse count)
-- 🔎 Full-text keyword search (returns up to 20 results by default)
-- 📦 One-click install script with bundled data archive
-- 🚀 Zero third-party dependencies — only Python 3.6+ required
-
----
-
-## Requirements
-
-| Item | Requirement |
-|------|-------------|
-| Python | 3.6 or higher |
-| OS | macOS / Linux / Windows |
-| Disk Space | ~5 MB (data + scripts) |
-| Dependencies | None |
+- 📖 Alle 66 boeken van de Bijbel weergeven
+- 🔍 Verzen opzoeken op volledige naam of afkorting (heel hoofdstuk, één vers, versbereik)
+- 🗂️ Boekinformatie bekijken (aantal hoofdstukken, aantal verzen)
+- 🔎 Volledige tekst doorzoeken op trefwoord (geeft standaard maximaal 20 resultaten)
+- 📦 Één-klik installatiescript met ingepakt gegevensarchief
+- 🚀 Geen externe afhankelijkheden — alleen Python 3.6+ vereist
 
 ---
 
-## Installation
+## Vereisten
 
-### Option 1: One-Click Install (Recommended)
+| Item | Vereiste |
+|------|----------|
+| Python | 3.6 of hoger |
+| Besturingssysteem | macOS / Linux / Windows |
+| Schijfruimte | ~5 MB (gegevens + scripts) |
+| Afhankelijkheden | Geen |
 
-Best for beginners. Three commands and you're done.
+---
 
-**Step 1: Verify Python 3 is installed**
+## Installatie
+
+### Optie 1: Één-klik installatie (Aanbevolen)
+
+Het beste voor beginners. Drie commando's en je bent klaar.
+
+**Stap 1: Controleer of Python 3 is geïnstalleerd**
 
 ```bash
 python3 --version
 ```
 
-If you get `command not found`, install Python 3 first:
+Als je `command not found` krijgt, installeer dan eerst Python 3:
 
-| System | How to Install |
-|--------|---------------|
-| macOS | `brew install python3` or download from [python.org](https://www.python.org/downloads/) |
+| Systeem | Installatiemethode |
+|----------|-------------------|
+| macOS | `brew install python3` of download via [python.org](https://www.python.org/downloads/) |
 | Ubuntu / Debian | `sudo apt update && sudo apt install python3` |
-| Windows | Download from [python.org](https://www.python.org/downloads/) — **make sure to check** "Add Python to PATH" during installation |
+| Windows | Download via [python.org](https://www.python.org/downloads/) — **zorg ervoor dat je** "Add Python to PATH" aanvinkt tijdens de installatie |
 
-**Step 2: Clone this repository**
+**Stap 2: Kloon deze repository**
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
 cd bible-skill
 ```
 
-> No git? Click the green "Code" button on this page → "Download ZIP", then extract.
+> Geen git? Klik op de groene "Code"-knop op deze pagina → "Download ZIP", en pak het bestand uit.
 
-**Step 3: Run the install script**
+**Stap 3: Voer het installatiescript uit**
 
 ```bash
 bash scripts/install.sh
 ```
 
-The install script performs these steps automatically:
+Het installatiescript voert automatisch de volgende stappen uit:
 
 ```
-[Step 1/6] Check Python 3           → Verify Python 3 is available
-[Step 2/6] Set Bible data directory  → Default: ~/bible-data/
-[Step 3/6] Extract Bible text data   → Unpack 66 .txt files from bundled archive
-[Step 4/6] Create skill directory    → Create ~/.hermes/skills/creative/bible/
-[Step 5/6] Configure search script   → Auto-update data path
-[Step 6/6] Verify installation       → Run 4 tests to confirm everything works
+|[Step 1/6] Check Python 3           → Verify Python 3 is available
+|[Step 2/6] Set Bible data directory  → Default: ~/bible-data/
+|[Step 3/6] Extract Bible text data   → Unpack 66 .txt files from bundled archive
+|[Step 4/6] Create skill directory    → Create ~/.hermes/skills/creative/bible/
+|[Step 5/6] Configure search script   → Auto-update data path
+|[Step 6/6] Verify installation       → Run 4 tests to confirm everything works
 ```
 
-To use a custom data directory:
+Om een aangepaste gegevensmap te gebruiken:
 
 ```bash
 bash scripts/install.sh /your/custom/path
@@ -112,49 +112,49 @@ bash scripts/install.sh /your/custom/path
 
 ---
 
-### Option 2: Manual Install
+### Optie 2: Handmatige installatie
 
-For users who want to understand each step.
+Voor gebruikers die elke stap willen begrijpen.
 
-**Step 1: Clone this repository**
+**Stap 1: Kloon deze repository**
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
 cd bible-skill
 ```
 
-**Step 2: Create data directory and extract data**
+**Stap 2: Maak een gegevensmap aan en pak de gegevens uit**
 
 ```bash
 mkdir -p ~/bible-data
 tar xzf assets/bible-txt-file.tar.gz -C ~/bible-data --strip-components=1
 ```
 
-**Step 3: Verify file count**
+**Stap 3: Controleer het aantal bestanden**
 
 ```bash
 ls ~/bible-data/*.txt | wc -l
 ```
 
-Should output `66`. If not, re-download this project.
+Dit moet `66` als uitvoer geven. Zo niet, download dit project opnieuw.
 
-**Step 4: Update the data path in the script**
+**Stap 4: Werk het gegevenspad in het script bij**
 
-Open `scripts/bible_search.py` and find this line near the top:
+Open `scripts/bible_search.py` en zoek deze regel bovenaan:
 
 ```python
 BIBLE_DIR = os.path.expanduser("~/workspace/20260413/bible-txt-file")
 ```
 
-Change it to your actual data path:
+Wijzig dit in je werkelijke gegevenspad:
 
 ```python
 BIBLE_DIR = os.path.expanduser("~/bible-data")
 ```
 
-> 💡 You can also use an absolute path, e.g. `BIBLE_DIR = "/Users/yourname/bible-data"`
+> 💡 Je kunt ook een absoluut pad gebruiken, bijv. `BIBLE_DIR = "/Users/yourname/bible-data"`
 
-**Step 5: Verify installation**
+**Stap 5: Controleer de installatie**
 
 ```bash
 # Test 1: List all 66 books
@@ -174,13 +174,13 @@ python3 scripts/bible_search.py info 诗篇
 # Expected: 【诗篇】共 150 章，2461 节
 ```
 
-All 4 tests passing means installation is successful!
+Als alle 4 tests slagen, is de installatie succesvol!
 
 ---
 
-### Option 3: Clone & Run
+### Optie 3: Klonen & uitvoeren
 
-For developers who want to use the scripts directly without the install script:
+Voor ontwikkelaars die de scripts direct willen gebruiken zonder het installatiescript:
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
@@ -196,23 +196,23 @@ python3 scripts/bible_search.py 创 1:1
 
 ---
 
-## Usage
+## Gebruik
 
-Basic command format:
+Basiscommandoformaat:
 
 ```bash
 python3 scripts/bible_search.py <command>
 ```
 
-> 💡 The examples below assume you're in the project root directory. Otherwise, use the full path to the script.
+> 💡 De onderstaande voorbeelden gaan ervan uit dat je in de hoofdmap van het project staat. Gebruik anders het volledige pad naar het script.
 
-### 1. List All 66 Books
+### 1. Alle 66 boeken weergeven
 
 ```bash
 python3 scripts/bible_search.py list
 ```
 
-Example output:
+Voorbeelduitvoer:
 ```
 旧约（39卷）:
    1 创世记
@@ -225,22 +225,22 @@ Example output:
   ...
 ```
 
-### 2. View Book Info
+### 2. Boekinformatie bekijken
 
-Supports full Chinese names or abbreviations:
+Ondersteunt volledige Chinese namen of afkortingen:
 
 ```bash
 python3 scripts/bible_search.py info 创世记
 python3 scripts/bible_search.py info 太
 ```
 
-Example output:
+Voorbeelduitvoer:
 ```
 【创世记】共 50 章，1533 节
 【马太福音】共 28 章，1071 节
 ```
 
-### 3. View an Entire Chapter
+### 3. Een heel hoofdstuk bekijken
 
 ```bash
 python3 scripts/bible_search.py 创世记 1
@@ -248,7 +248,7 @@ python3 scripts/bible_search.py 太 5
 python3 scripts/bible_search.py 诗 23
 ```
 
-Example output:
+Voorbeelduitvoer:
 ```
 【诗篇 第23章】
 1 耶和华是我的牧者，我必不至缺乏。
@@ -256,9 +256,9 @@ Example output:
 ...
 ```
 
-### 4. View a Single Verse
+### 4. Eén vers bekijken
 
-Format: `BookName Chapter:Verse`
+Formaat: `Boeknaam Hoofdstuk:Vers`
 
 ```bash
 python3 scripts/bible_search.py 创 1:1
@@ -266,22 +266,22 @@ python3 scripts/bible_search.py 约 3:16
 python3 scripts/bible_search.py 诗 23:1
 ```
 
-Example output:
+Voorbeelduitvoer:
 ```
 【约翰福音 3:16】
 16 "　神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。
 ```
 
-### 5. View a Verse Range
+### 5. Een versbereik bekijken
 
-Format: `BookName Chapter:StartVerse-EndVerse`
+Formaat: `Boeknaam Hoofdstuk:Beginvers-Eindvers`
 
 ```bash
 python3 scripts/bible_search.py 太 5:3-12
 python3 scripts/bible_search.py 创 1:1-5
 ```
 
-Example output:
+Voorbeelduitvoer:
 ```
 【马太福音 5:3-12】
 3 虚心的人有福了！因为天国是他们的。
@@ -289,9 +289,9 @@ Example output:
 ...
 ```
 
-### 6. Full-Text Search
+### 6. Volledige tekst doorzoeken
 
-Search across all 66 books for verses containing a keyword:
+Doorzoek alle 66 boeken naar verzen die een trefwoord bevatten:
 
 ```bash
 python3 scripts/bible_search.py search 耶和华是我的牧者
@@ -299,25 +299,25 @@ python3 scripts/bible_search.py search 神爱世人
 python3 scripts/bible_search.py search 以马内利
 ```
 
-Example output:
+Voorbeelduitvoer:
 ```
 【约翰福音 3:16】"　神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。
 【约翰一书 4:9】　神差他独生子到世间来，使我们借着他得生，　神爱我们的心在此就显明了。
 ...
 ```
 
-> 💡 Search returns up to 20 results by default. To change this, open `scripts/bible_search.py`, find `search_bible(keyword, max_results=20)`, and change `20` to your desired number.
+> 💡 De zoekfunctie geeft standaard maximaal 20 resultaten. Om dit te wijzigen, open `scripts/bible_search.py`, zoek `search_bible(keyword, max_results=20)`, en wijzig `20` in het gewenste aantal.
 
 ---
 
-## Book Name Abbreviations
+## Boeknaam-afkortingen
 
-The tool supports both full Chinese names and common abbreviations:
+Het hulpmiddel ondersteunt zowel volledige Chinese namen als gangbare afkortingen:
 
-### Old Testament (39 Books)
+### Oude Testament (39 boeken)
 
-| Abbr | Full Name (Chinese) | English Name | Abbr | Full Name (Chinese) | English Name |
-|------|---------------------|--------------|------|---------------------|--------------|
+| Afk. | Volledige naam (Chinees) | Engelse naam | Afk. | Volledige naam (Chinees) | Engelse naam |
+|------|--------------------------|--------------|------|--------------------------|--------------|
 | 创 | 创世记 | Genesis | 拿 | 约拿书 | Jonah |
 | 出 | 出埃及记 | Exodus | 弥 | 弥迦书 | Micah |
 | 利 | 利未记 | Leviticus | 鸿 | 那鸿书 | Nahum |
@@ -339,10 +339,10 @@ The tool supports both full Chinese names and common abbreviations:
 | 珥 | 约珥书 | Joel | 摩 | 阿摩司书 | Amos |
 | 俄 | 俄巴底亚书 | Obadiah | | | |
 
-### New Testament (27 Books)
+### Nieuwe Testament (27 boeken)
 
-| Abbr | Full Name (Chinese) | English Name | Abbr | Full Name (Chinese) | English Name |
-|------|---------------------|--------------|------|---------------------|--------------|
+| Afk. | Volledige naam (Chinees) | Engelse naam | Afk. | Volledige naam (Chinees) | Engelse naam |
+|------|--------------------------|--------------|------|--------------------------|--------------|
 | 太 | 马太福音 | Matthew | 提前 | 提摩太前书 | 1 Timothy |
 | 可 | 马可福音 | Mark | 提后 | 提摩太后书 | 2 Timothy |
 | 路 | 路加福音 | Luke | 多 | 提多书 | Titus |
@@ -360,81 +360,72 @@ The tool supports both full Chinese names and common abbreviations:
 
 ---
 
-## Data Format
+## Gegevensformaat
 
-This project uses the Chinese Union Version (和合本, CUV) Bible text, stored as 66 plain text files.
+Dit project gebruikt de Chinese Union Version (和合本, CUV) Bijbeltekst, opgeslagen als 66 platte-tekstbestanden.
 
-### File Naming
+### Bestandsnaamgeving
 
-`Number+BookName.txt`, numbered 1–66:
+`Nummer+Boeknaam.txt`, genummerd 1–66:
 
 ```
 1创世记.txt   2出埃及记.txt   3利未记.txt   ...   66启示录.txt
 ```
 
-### File Content Format
+### Bestandsinhoudformaat
 
-Within each file, **each line represents one entire chapter**:
+Binnen elk bestand vertegenwoordigt **elke regel één compleet hoofdstuk**:
 
 ```
 第X章1Verse one text2Verse two text3Verse three text...NLast verse text
 ```
 
-Rules:
-- Line starts with `第X章` (X is an Arabic numeral, e.g. `第1章`, `第23章`)
-- Immediately followed by verse number (digits) + verse text
-- **No space** between verse number and text
-- After one verse ends, the next verse number follows immediately
-- Each chapter occupies exactly one line (no line breaks within a chapter)
-- File encoding: **UTF-8**
+Regels:
+- Regel begint met `第X章` (X is een Arabisch cijfer, bijv. `第1章`, `第23章`)
+- Direct gevolgd door versnummer (cijfers) + verstekst
+- **Geen spatie** tussen versnummer en tekst
+- Nadat één vers eindigt, volgt het volgende versnummer direct
+- Elk hoofdstuk beslaat precies één regel (geen regeleinden binnen een hoofdstuk)
+- Bestandscodering: **UTF-8**
 
-Real example (Genesis 1:1-5):
+Werkelijk voorbeeld (Genesis 1:1-5):
 
 ```
 第1章1起初　神创造天地。2地是空虚混沌，渊面黑暗；　神的灵运行在水面上。3　神说："要有光。"就有了光。4　神看光是好的，就把光暗分开了。5　神称光为"昼"，称暗为"夜"。有晚上，有早晨，这是头一日。
 ```
 
-If you have Bible data in a different format, see [SKILL.md](SKILL.md) for a conversion script.
+Als je Bijbelgegevens in een ander formaat hebt, zie [SKILL.md](SKILL.md) voor een conversiescript.
 
 ---
 
-## File Structure
+## Bestandsstructuur
 
 ```
 bible-skill/
-├── README.md                     ← This file (Chinese)
-├── README_EN.md                  ← English documentation
-├── README_ES.md                  ← Documentación en Español
-├── README_FR.md                  ← Documentation en Français
-├── README_DE.md                  ← Dokumentation auf Deutsch
-├── README_JA.md                  ← 日本語ドキュメント
-├── README_KO.md                  ← 한국어 문서
-├── README_PT.md                  ← Documentação em Português
-├── README_RU.md                  ← Документация на Русском
-├── README_AR.md                  ← التوثيق بالعربية
-├── README_IT.md                  ← Documentazione in Italiano
+├── README.md                     ← Dit bestand (Chinees)
+├── README_EN.md                  ← Engelse documentatie
 ├── README_NL.md                  ← Nederlandse documentatie
-├── LICENSE                       ← MIT License
-├── SKILL.md                      ← Hermes Agent skill doc (detailed manual install guide)
+├── LICENSE                       ← MIT-licentie
+├── SKILL.md                      ← Hermes Agent skill-document (gedetailleerde handleiding voor handmatige installatie)
 ├── .gitignore
 ├── assets/
-│   └── bible-txt-file.tar.gz     ← Bible data archive (66 books, ~1.2 MB)
+│   └── bible-txt-file.tar.gz     ← Bijbelgegevensarchief (66 boeken, ~1,2 MB)
 └── scripts/
-    ├── bible_search.py           ← Core search script (Python 3, zero dependencies)
-    └── install.sh                ← One-click install script
+    ├── bible_search.py           ← Kernzoekscript (Python 3, geen afhankelijkheden)
+    └── install.sh                ← Één-klik installatiescript
 ```
 
 ---
 
-## Using with AI Agents
+## Gebruik met AI-agents
 
-This project is designed to integrate with AI coding assistants, enabling AI to directly query and cite Bible verses. Below are setup guides for Claude Code, Hermes Agent, and OpenClaw.
+Dit project is ontworpen om te integreren met AI-codeerassistants, zodat AI direct Bijbelverzen kan opzoeken en citeren. Hieronder staan installatiehandleidingen voor Claude Code, Hermes Agent en OpenClaw.
 
 ### Claude Code
 
-Claude Code is Anthropic's command-line AI coding assistant. You can teach it to use the Bible search skill via a CLAUDE.md file.
+Claude Code is de opdrachtregel-AI-codeerassistent van Anthropic. Je kunt het leren de Bijbelzoekfunctie te gebruiken via een CLAUDE.md-bestand.
 
-**Step 1: Install Bible Data**
+**Stap 1: Installeer Bijbelgegevens**
 
 ```bash
 # Clone the repo and run the install script
@@ -443,9 +434,9 @@ cd bible-skill
 bash scripts/install.sh
 ```
 
-**Step 2: Create CLAUDE.md in your project root**
+**Stap 2: Maak CLAUDE.md aan in de hoofdmap van je project**
 
-Create a `CLAUDE.md` file in your project root (or any working directory) with the following content:
+Maak een `CLAUDE.md`-bestand aan in de hoofdmap van je project (of een andere werkmap) met de volgende inhoud:
 
 ```markdown
 # Bible Search Tool
@@ -464,9 +455,9 @@ To query Bible verses, run:
 Supports Chinese book names (创世记), abbreviations (创), and English names (Genesis). Use the terminal tool to execute commands.
 ```
 
-**Step 3: Use**
+**Stap 3: Gebruik**
 
-Ask Claude Code in natural language:
+Vraag Claude Code in natuurlijke taal:
 
 ```
 > Look up John 3:16
@@ -474,67 +465,67 @@ Ask Claude Code in natural language:
 > List all books of the Bible
 ```
 
-Claude Code will automatically call the search script based on the CLAUDE.md instructions.
+Claude Code zal automatisch het zoekscript aanroepen op basis van de instructies in CLAUDE.md.
 
-> **Tip**: If the install path is not the default `/usr/local/share/bible-txt-file/`, replace the paths in CLAUDE.md with your actual path. Test with `python3 scripts/bible_search.py info Genesis` to verify it works.
+> **Tip**: Als het installatiepad niet het standaardpad `/usr/local/share/bible-txt-file/` is, vervang dan de paden in CLAUDE.md door je werkelijke pad. Test met `python3 scripts/bible_search.py info Genesis` om te verifiëren dat het werkt.
 
 ---
 
 ### Hermes Agent
 
-Hermes Agent has a built-in skill system — this repository is itself a skill package designed for Hermes.
+Hermes Agent heeft een ingebouwd vaardighedensysteem — deze repository is zelf een vaardigheidspakket ontworpen voor Hermes.
 
-**Option 1: Auto-load via SKILL.md (Recommended)**
+**Optie 1: Automatisch laden via SKILL.md (Aanbevolen)**
 
-1. Clone this repo into the Hermes skills directory:
+1. Kloon deze repository in de Hermes-vaardighedensmap:
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git ~/.hermes/skills/bible
 ```
 
-2. Hermes Agent automatically loads `~/.hermes/skills/bible/SKILL.md` on startup — no extra configuration needed.
+2. Hermes Agent laadt automatisch `~/.hermes/skills/bible/SKILL.md` bij het opstarten — geen extra configuratie nodig.
 
-3. Install the Bible data:
+3. Installeer de Bijbelgegevens:
 
 ```bash
 cd ~/.hermes/skills/bible
 bash scripts/install.sh
 ```
 
-4. Just talk to Hermes:
+4. Praat gewoon met Hermes:
 
 ```
 Look up Psalm 23
 Search for Bible verses about "peace"
 ```
 
-**Option 2: Custom Skill Path**
+**Optie 2: Aangepast vaardigheidspad**
 
-If you prefer a different location, add the skill path in your Hermes config:
+Als je een andere locatie prefereert, voeg dan het vaardigheidspad toe in je Hermes-configuratie:
 
 ```yaml
 skills:
   - path: /your/custom/path/bible-skill/SKILL.md
 ```
 
-Then run the install script:
+Voer vervolgens het installatiescript uit:
 
 ```bash
 cd /your/custom/path/bible-skill
 bash scripts/install.sh
 ```
 
-> **Tip**: SKILL.md already contains complete installation and usage instructions. Once Hermes loads it, it will automatically understand how to invoke the tool. If you change the install path, update the `BIBLE_DIR` variable in SKILL.md accordingly.
+> **Tip**: SKILL.md bevat al volledige installatie- en gebruiks instructies. Zodra Hermes het laadt, begrijpt het automatisch hoe het hulpmiddel aan te roepen. Als je het installatiepad wijzigt, werk dan de variabele `BIBLE_DIR` in SKILL.md dienovereenkomstig bij.
 
 ---
 
 ### OpenClaw
 
-OpenClaw is an open-source AI Agent framework that supports integrating external capabilities via MCP (Model Context Protocol) or custom tools.
+OpenClaw is een opensource AI Agent-framework dat het integreren van externe mogelijkheden via MCP (Model Context Protocol) of aangepaste hulpmiddelen ondersteunt.
 
-**Option 1: Custom Tool Integration**
+**Optie 1: Aangepaste hulpmiddelintegratie**
 
-1. Install the Bible data and search script:
+1. Installeer de Bijbelgegevens en het zoekscript:
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
@@ -542,7 +533,7 @@ cd bible-skill
 bash scripts/install.sh
 ```
 
-2. Add the tool to your OpenClaw config file (typically `tools.yaml` or `config.yaml`):
+2. Voeg het hulpmiddel toe aan je OpenClaw-configuratiebestand (meestal `tools.yaml` of `config.yaml`):
 
 ```yaml
 tools:
@@ -574,17 +565,17 @@ tools:
         required: false
 ```
 
-3. Restart OpenClaw and use:
+3. Herstart OpenClaw en gebruik:
 
 ```
 Please look up John 3:16
 ```
 
-**Option 2: MCP Server Integration**
+**Optie 2: MCP-serverintegratie**
 
-If you prefer the MCP approach, create a simple MCP Server wrapper:
+Als je de MCP-aanpak prefereert, maak dan een eenvoudige MCP-serverwrapper:
 
-1. Create `/usr/local/share/bible-txt-file/bible_mcp_server.py`:
+1. Maak `/usr/local/share/bible-txt-file/bible_mcp_server.py` aan:
 
 ```python
 #!/usr/bin/env python3
@@ -641,7 +632,7 @@ for line in sys.stdin:
     print(json.dumps(response), flush=True)
 ```
 
-2. Register the MCP Server in your OpenClaw config:
+2. Registreer de MCP-server in je OpenClaw-configuratie:
 
 ```yaml
 mcp_servers:
@@ -651,47 +642,47 @@ mcp_servers:
     transport: stdio
 ```
 
-3. Restart OpenClaw — the AI can now query the Bible via the MCP protocol.
+3. Herstart OpenClaw — de AI kan nu de Bijbel doorzoeken via het MCP-protocol.
 
-> **Tip**: Option 1 is simpler and great for quick setup; Option 2 is more standardized and better for multi-agent setups. Choose based on your needs.
+> **Tip**: Optie 1 is eenvoudiger en ideaal voor snelle installatie; Optie 2 is meer gestandaardiseerd en beter voor multi-agent-opstellingen. Kies op basis van je behoeften.
 
 ---
 
 ## FAQ
 
-### Q: `python3: command not found`
+### V: `python3: command not found`
 
-Python 3 is not installed. See [Requirements](#requirements) for installation instructions.
+Python 3 is niet geïnstalleerd. Zie [Vereisten](#vereisten) voor installatie-instructies.
 
-### Q: `No such file or directory`
+### V: `No such file or directory`
 
-The Bible data directory path is incorrect. Check the `BIBLE_DIR` variable in `scripts/bible_search.py` and make sure the directory exists and contains 66 .txt files.
+Het pad naar de Bijbelgegevensmap is onjuist. Controleer de variabele `BIBLE_DIR` in `scripts/bible_search.py` en zorg ervoor dat de map bestaat en 66 .txt-bestanden bevat.
 
-### Q: `未找到卷名: xxx` (Book name not found)
+### V: `未找到卷名: xxx` (Boeknaam niet gevonden)
 
-The book name or abbreviation you entered is not in the mapping table. See [Book Name Abbreviations](#book-name-abbreviations), or add a custom abbreviation to the `BOOK_MAP` dictionary in `scripts/bible_search.py`.
+De ingevoerde boeknaam of afkorting bevindt zich niet in de toewijzingstabel. Zie [Boeknaam-afkortingen](#boeknaam-afkortingen), of voeg een aangepaste afkorting toe aan het `BOOK_MAP`-woordenboek in `scripts/bible_search.py`.
 
-### Q: Verse numbers are garbled or content is incomplete
+### V: Versnummers zijn onleesbaar of de inhoud is onvolledig
 
-The .txt file format is incorrect. Check against the [Data Format](#data-format) section.
+Het .txt-bestandsformaat is onjuist. Controleer dit aan de hand van de sectie [Gegevensformaat](#gegevensformaat).
 
-### Q: `Permission denied`
+### V: `Permission denied`
 
-The script doesn't have execute permission. Run:
+Het script heeft geen uitvoerrechten. Voer uit:
 
 ```bash
 chmod +x scripts/bible_search.py
 ```
 
-### Q: Not enough search results
+### V: Niet genoeg zoekresultaten
 
-Search returns up to 20 results by default. Open `scripts/bible_search.py`, find `search_bible(keyword, max_results=20)`, and change `20` to your desired number.
+De zoekfunctie geeft standaard maximaal 20 resultaten. Open `scripts/bible_search.py`, zoek `search_bible(keyword, max_results=20)`, en wijzig `20` in het gewenste aantal.
 
 ---
 
-## License
+## Licentie
 
-This project is licensed under the [MIT License](LICENSE).
+Dit project is gelicentieerd onder de [MIT-licentie](LICENSE).
 
 ```
 MIT License
@@ -717,4 +708,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-In short: you are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell this software, provided you include the copyright notice and license notice. The software is provided "as is", without warranty of any kind.
+Kort samengevat: je bent vrij om deze software te gebruiken, kopiëren, wijzigen, samenvoegen, publiceren, distribueren, in sublicentie te geven en/of te verkopen, op voorwaarde dat je de copyrightvermelding en licentievermelding opneemt. De software wordt geleverd "zoals het is", zonder enige garantie.

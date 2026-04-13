@@ -1,110 +1,110 @@
-# Chinese Bible Search Skill
+# 中国語聖書検索ツール
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.6+](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/)
 
-[中文文档](README.md) | [Español](README_ES.md) | [Français](README_FR.md) | [Deutsch](README_DE.md) | [日本語](README_JA.md) | [한국어](README_KO.md) | [Português](README_PT.md) | [Русский](README_RU.md) | [العربية](README_AR.md) | [Italiano](README_IT.md) | [Nederlands](README_NL.md)
+[中文](README.md) | [English](README_EN.md) | 日本語
 
-A local, offline Chinese Bible (Union Version / 和合本) search tool. Query verses by book name, chapter, verse, or keyword — zero dependencies, ready to use.
+ローカル・オフラインで動作する中国語聖書（和合本 / Union Version）検索ツール。書名、章、節、キーワードで聖句を検索 — 外部依存なし、すぐに使えます。
 
 ---
 
-## Table of Contents
+## 目次
 
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-  - [Option 1: One-Click Install (Recommended)](#option-1-one-click-install-recommended)
-  - [Option 2: Manual Install](#option-2-manual-install)
-  - [Option 3: Clone & Run](#option-3-clone--run)
-- [Usage](#usage)
-  - [1. List All 66 Books](#1-list-all-66-books)
-  - [2. View Book Info](#2-view-book-info)
-  - [3. View an Entire Chapter](#3-view-an-entire-chapter)
-  - [4. View a Single Verse](#4-view-a-single-verse)
-  - [5. View a Verse Range](#5-view-a-verse-range)
-  - [6. Full-Text Search](#6-full-text-search)
-- [Book Name Abbreviations](#book-name-abbreviations)
-- [Data Format](#data-format)
-- [File Structure](#file-structure)
-- [Using with AI Agents](#using-with-ai-agents)
+- [機能](#機能)
+- [要件](#要件)
+- [インストール](#インストール)
+  - [方法1：ワンクリックインストール（推奨）](#方法1ワンクリックインストール推奨)
+  - [方法2：手動インストール](#方法2手動インストール)
+  - [方法3：クローンして実行](#方法3クローンして実行)
+- [使い方](#使い方)
+  - [1. 66書の一覧表示](#1-66書の一覧表示)
+  - [2. 書物情報の表示](#2-書物情報の表示)
+  - [3. 章全体の表示](#3-章全体の表示)
+  - [4. 単一の節の表示](#4-単一の節の表示)
+  - [5. 節の範囲表示](#5-節の範囲表示)
+  - [6. 全文検索](#6-全文検索)
+- [書名の略称](#書名の略称)
+- [データ形式](#データ形式)
+- [ファイル構成](#ファイル構成)
+- [AIエージェントとの連携](#aiエージェントとの連携)
   - [Claude Code](#claude-code)
   - [Hermes Agent](#hermes-agent)
   - [OpenClaw](#openclaw)
 - [FAQ](#faq)
-- [License](#license)
+- [ライセンス](#ライセンス)
 
 ---
 
-## Features
+## 機能
 
-- 📖 List all 66 books of the Bible
-- 🔍 Query verses by full name or abbreviation (whole chapter, single verse, verse range)
-- 🗂️ View book info (chapter count, verse count)
-- 🔎 Full-text keyword search (returns up to 20 results by default)
-- 📦 One-click install script with bundled data archive
-- 🚀 Zero third-party dependencies — only Python 3.6+ required
+- 📖 聖書全66書の一覧表示
+- 🔍 書名（正式名称・略称）で聖句を検索（章全体、単一の節、節の範囲）
+- 🗂️ 書物情報の表示（章数、節数）
+- 🔎 全文キーワード検索（デフォルトで最大20件の結果を返す）
+- 📦 データアーカイブ同梱のワンクリックインストールスクリプト
+- 🚀 サードパーティ依存なし — Python 3.6+ のみ必要
 
 ---
 
-## Requirements
+## 要件
 
-| Item | Requirement |
-|------|-------------|
-| Python | 3.6 or higher |
+| 項目 | 要件 |
+|------|------|
+| Python | 3.6 以上 |
 | OS | macOS / Linux / Windows |
-| Disk Space | ~5 MB (data + scripts) |
-| Dependencies | None |
+| ディスク容量 | 約5 MB（データ＋スクリプト） |
+| 依存パッケージ | なし |
 
 ---
 
-## Installation
+## インストール
 
-### Option 1: One-Click Install (Recommended)
+### 方法1：ワンクリックインストール（推奨）
 
-Best for beginners. Three commands and you're done.
+初心者向け。3つのコマンドで完了します。
 
-**Step 1: Verify Python 3 is installed**
+**ステップ1：Python 3がインストールされていることを確認**
 
 ```bash
 python3 --version
 ```
 
-If you get `command not found`, install Python 3 first:
+`command not found` と表示された場合、先にPython 3をインストールしてください：
 
-| System | How to Install |
-|--------|---------------|
-| macOS | `brew install python3` or download from [python.org](https://www.python.org/downloads/) |
+| システム | インストール方法 |
+|----------|------------------|
+| macOS | `brew install python3` または [python.org](https://www.python.org/downloads/) からダウンロード |
 | Ubuntu / Debian | `sudo apt update && sudo apt install python3` |
-| Windows | Download from [python.org](https://www.python.org/downloads/) — **make sure to check** "Add Python to PATH" during installation |
+| Windows | [python.org](https://www.python.org/downloads/) からダウンロード — インストール時に「Add Python to PATH」に**必ずチェック**を入れてください |
 
-**Step 2: Clone this repository**
+**ステップ2：このリポジトリをクローン**
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
 cd bible-skill
 ```
 
-> No git? Click the green "Code" button on this page → "Download ZIP", then extract.
+> gitがない場合？このページの緑色の「Code」ボタン → 「Download ZIP」をクリックし、解凍してください。
 
-**Step 3: Run the install script**
+**ステップ3：インストールスクリプトを実行**
 
 ```bash
 bash scripts/install.sh
 ```
 
-The install script performs these steps automatically:
+インストールスクリプトは以下のステップを自動的に実行します：
 
 ```
-[Step 1/6] Check Python 3           → Verify Python 3 is available
-[Step 2/6] Set Bible data directory  → Default: ~/bible-data/
-[Step 3/6] Extract Bible text data   → Unpack 66 .txt files from bundled archive
-[Step 4/6] Create skill directory    → Create ~/.hermes/skills/creative/bible/
-[Step 5/6] Configure search script   → Auto-update data path
-[Step 6/6] Verify installation       → Run 4 tests to confirm everything works
+[Step 1/6] Check Python 3           → Python 3が利用可能か確認
+[Step 2/6] Set Bible data directory  → デフォルト: ~/bible-data/
+[Step 3/6] Extract Bible text data   → 同梱アーカイブから66の.txtファイルを展開
+[Step 4/6] Create skill directory    → ~/.hermes/skills/creative/bible/ を作成
+[Step 5/6] Configure search script   → データパスを自動更新
+[Step 6/6] Verify installation       → 4つのテストを実行して動作確認
 ```
 
-To use a custom data directory:
+カスタムデータディレクトリを使用する場合：
 
 ```bash
 bash scripts/install.sh /your/custom/path
@@ -112,49 +112,49 @@ bash scripts/install.sh /your/custom/path
 
 ---
 
-### Option 2: Manual Install
+### 方法2：手動インストール
 
-For users who want to understand each step.
+各ステップを理解したいユーザー向け。
 
-**Step 1: Clone this repository**
+**ステップ1：このリポジトリをクローン**
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
 cd bible-skill
 ```
 
-**Step 2: Create data directory and extract data**
+**ステップ2：データディレクトリを作成してデータを展開**
 
 ```bash
 mkdir -p ~/bible-data
 tar xzf assets/bible-txt-file.tar.gz -C ~/bible-data --strip-components=1
 ```
 
-**Step 3: Verify file count**
+**ステップ3：ファイル数を確認**
 
 ```bash
 ls ~/bible-data/*.txt | wc -l
 ```
 
-Should output `66`. If not, re-download this project.
+`66` と出力されるはずです。そうでない場合は、このプロジェクトを再ダウンロードしてください。
 
-**Step 4: Update the data path in the script**
+**ステップ4：スクリプト内のデータパスを更新**
 
-Open `scripts/bible_search.py` and find this line near the top:
+`scripts/bible_search.py` を開き、先頭付近の以下の行を見つけてください：
 
 ```python
 BIBLE_DIR = os.path.expanduser("~/workspace/20260413/bible-txt-file")
 ```
 
-Change it to your actual data path:
+実際のデータパスに変更してください：
 
 ```python
 BIBLE_DIR = os.path.expanduser("~/bible-data")
 ```
 
-> 💡 You can also use an absolute path, e.g. `BIBLE_DIR = "/Users/yourname/bible-data"`
+> 💡 絶対パスも使用できます（例：`BIBLE_DIR = "/Users/yourname/bible-data"`）
 
-**Step 5: Verify installation**
+**ステップ5：インストールの確認**
 
 ```bash
 # Test 1: List all 66 books
@@ -174,13 +174,13 @@ python3 scripts/bible_search.py info 诗篇
 # Expected: 【诗篇】共 150 章，2461 节
 ```
 
-All 4 tests passing means installation is successful!
+4つのテストすべてが通れば、インストールは成功です！
 
 ---
 
-### Option 3: Clone & Run
+### 方法3：クローンして実行
 
-For developers who want to use the scripts directly without the install script:
+インストールスクリプトを使わずにスクリプトを直接使いたい開発者向け：
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
@@ -196,23 +196,23 @@ python3 scripts/bible_search.py 创 1:1
 
 ---
 
-## Usage
+## 使い方
 
-Basic command format:
+基本的なコマンド形式：
 
 ```bash
 python3 scripts/bible_search.py <command>
 ```
 
-> 💡 The examples below assume you're in the project root directory. Otherwise, use the full path to the script.
+> 💡 以下の例はプロジェクトのルートディレクトリにいることを前提としています。そうでない場合は、スクリプトへのフルパスを使用してください。
 
-### 1. List All 66 Books
+### 1. 66書の一覧表示
 
 ```bash
 python3 scripts/bible_search.py list
 ```
 
-Example output:
+出力例：
 ```
 旧约（39卷）:
    1 创世记
@@ -225,22 +225,22 @@ Example output:
   ...
 ```
 
-### 2. View Book Info
+### 2. 書物情報の表示
 
-Supports full Chinese names or abbreviations:
+中国語の正式名称または略称に対応：
 
 ```bash
 python3 scripts/bible_search.py info 创世记
 python3 scripts/bible_search.py info 太
 ```
 
-Example output:
+出力例：
 ```
 【创世记】共 50 章，1533 节
 【马太福音】共 28 章，1071 节
 ```
 
-### 3. View an Entire Chapter
+### 3. 章全体の表示
 
 ```bash
 python3 scripts/bible_search.py 创世记 1
@@ -248,7 +248,7 @@ python3 scripts/bible_search.py 太 5
 python3 scripts/bible_search.py 诗 23
 ```
 
-Example output:
+出力例：
 ```
 【诗篇 第23章】
 1 耶和华是我的牧者，我必不至缺乏。
@@ -256,9 +256,9 @@ Example output:
 ...
 ```
 
-### 4. View a Single Verse
+### 4. 単一の節の表示
 
-Format: `BookName Chapter:Verse`
+形式：`書名 章:節`
 
 ```bash
 python3 scripts/bible_search.py 创 1:1
@@ -266,22 +266,22 @@ python3 scripts/bible_search.py 约 3:16
 python3 scripts/bible_search.py 诗 23:1
 ```
 
-Example output:
+出力例：
 ```
 【约翰福音 3:16】
 16 "　神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。
 ```
 
-### 5. View a Verse Range
+### 5. 節の範囲表示
 
-Format: `BookName Chapter:StartVerse-EndVerse`
+形式：`書名 章:開始節-終了節`
 
 ```bash
 python3 scripts/bible_search.py 太 5:3-12
 python3 scripts/bible_search.py 创 1:1-5
 ```
 
-Example output:
+出力例：
 ```
 【马太福音 5:3-12】
 3 虚心的人有福了！因为天国是他们的。
@@ -289,9 +289,9 @@ Example output:
 ...
 ```
 
-### 6. Full-Text Search
+### 6. 全文検索
 
-Search across all 66 books for verses containing a keyword:
+全66書からキーワードを含む聖句を検索：
 
 ```bash
 python3 scripts/bible_search.py search 耶和华是我的牧者
@@ -299,24 +299,24 @@ python3 scripts/bible_search.py search 神爱世人
 python3 scripts/bible_search.py search 以马内利
 ```
 
-Example output:
+出力例：
 ```
 【约翰福音 3:16】"　神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。
 【约翰一书 4:9】　神差他独生子到世间来，使我们借着他得生，　神爱我们的心在此就显明了。
 ...
 ```
 
-> 💡 Search returns up to 20 results by default. To change this, open `scripts/bible_search.py`, find `search_bible(keyword, max_results=20)`, and change `20` to your desired number.
+> 💡 検索はデフォルトで最大20件の結果を返します。変更するには、`scripts/bible_search.py` を開き、`search_bible(keyword, max_results=20)` の `20` を希望の数に変更してください。
 
 ---
 
-## Book Name Abbreviations
+## 書名の略称
 
-The tool supports both full Chinese names and common abbreviations:
+このツールは中国語の正式名称と一般的な略称の両方に対応しています：
 
-### Old Testament (39 Books)
+### 旧約聖書（39書）
 
-| Abbr | Full Name (Chinese) | English Name | Abbr | Full Name (Chinese) | English Name |
+| 略称 | 正式名称（中国語） | 英語名 | 略称 | 正式名称（中国語） | 英語名 |
 |------|---------------------|--------------|------|---------------------|--------------|
 | 创 | 创世记 | Genesis | 拿 | 约拿书 | Jonah |
 | 出 | 出埃及记 | Exodus | 弥 | 弥迦书 | Micah |
@@ -339,9 +339,9 @@ The tool supports both full Chinese names and common abbreviations:
 | 珥 | 约珥书 | Joel | 摩 | 阿摩司书 | Amos |
 | 俄 | 俄巴底亚书 | Obadiah | | | |
 
-### New Testament (27 Books)
+### 新約聖書（27書）
 
-| Abbr | Full Name (Chinese) | English Name | Abbr | Full Name (Chinese) | English Name |
+| 略称 | 正式名称（中国語） | 英語名 | 略称 | 正式名称（中国語） | 英語名 |
 |------|---------------------|--------------|------|---------------------|--------------|
 | 太 | 马太福音 | Matthew | 提前 | 提摩太前书 | 1 Timothy |
 | 可 | 马可福音 | Mark | 提后 | 提摩太后书 | 2 Timothy |
@@ -360,81 +360,72 @@ The tool supports both full Chinese names and common abbreviations:
 
 ---
 
-## Data Format
+## データ形式
 
-This project uses the Chinese Union Version (和合本, CUV) Bible text, stored as 66 plain text files.
+このプロジェクトは中国語和合本（CUV）の聖書テキストを使用し、66のプレーンテキストファイルとして保存されています。
 
-### File Naming
+### ファイル命名
 
-`Number+BookName.txt`, numbered 1–66:
+`番号+書名.txt`、1〜66の番号付き：
 
 ```
 1创世记.txt   2出埃及记.txt   3利未记.txt   ...   66启示录.txt
 ```
 
-### File Content Format
+### ファイル内容の形式
 
-Within each file, **each line represents one entire chapter**:
+各ファイル内で、**1行が1つの章全体**を表します：
 
 ```
 第X章1Verse one text2Verse two text3Verse three text...NLast verse text
 ```
 
-Rules:
-- Line starts with `第X章` (X is an Arabic numeral, e.g. `第1章`, `第23章`)
-- Immediately followed by verse number (digits) + verse text
-- **No space** between verse number and text
-- After one verse ends, the next verse number follows immediately
-- Each chapter occupies exactly one line (no line breaks within a chapter)
-- File encoding: **UTF-8**
+ルール：
+- 行は `第X章` で始まる（Xはアラビア数字、例：`第1章`、`第23章`）
+- その直後に節番号（数字）+ 節のテキストが続く
+- 節番号とテキストの間に**スペースなし**
+- 1つの節が終わると、すぐに次の節番号が続く
+- 各章は正確に1行（章内に改行なし）
+- ファイルエンコーディング：**UTF-8**
 
-Real example (Genesis 1:1-5):
+実際の例（創世記 1:1-5）：
 
 ```
 第1章1起初　神创造天地。2地是空虚混沌，渊面黑暗；　神的灵运行在水面上。3　神说："要有光。"就有了光。4　神看光是好的，就把光暗分开了。5　神称光为"昼"，称暗为"夜"。有晚上，有早晨，这是头一日。
 ```
 
-If you have Bible data in a different format, see [SKILL.md](SKILL.md) for a conversion script.
+異なる形式の聖書データをお持ちの場合は、[SKILL.md](SKILL.md) の変換スクリプトを参照してください。
 
 ---
 
-## File Structure
+## ファイル構成
 
 ```
 bible-skill/
-├── README.md                     ← This file (Chinese)
-├── README_EN.md                  ← English documentation
-├── README_ES.md                  ← Documentación en Español
-├── README_FR.md                  ← Documentation en Français
-├── README_DE.md                  ← Dokumentation auf Deutsch
+├── README.md                     ← このファイル（中国語）
+├── README_EN.md                  ← 英語ドキュメント
 ├── README_JA.md                  ← 日本語ドキュメント
-├── README_KO.md                  ← 한국어 문서
-├── README_PT.md                  ← Documentação em Português
-├── README_RU.md                  ← Документация на Русском
-├── README_AR.md                  ← التوثيق بالعربية
-├── README_IT.md                  ← Documentazione in Italiano
-├── README_NL.md                  ← Nederlandse documentatie
 ├── LICENSE                       ← MIT License
-├── SKILL.md                      ← Hermes Agent skill doc (detailed manual install guide)
+├── SKILL.md                      ← Hermes Agentスキルドキュメント（手動インストールの詳細ガイド）
 ├── .gitignore
 ├── assets/
-│   └── bible-txt-file.tar.gz     ← Bible data archive (66 books, ~1.2 MB)
+│   └── bible-txt-file.tar.gz     ← 聖書データアーカイブ（66書、約1.2 MB）
 └── scripts/
-    ├── bible_search.py           ← Core search script (Python 3, zero dependencies)
-    └── install.sh                ← One-click install script
+    ├── bible_search.py           ← コア検索スクリプト（Python 3、依存なし）
+    └── install.sh                ← ワンクリックインストールスクリプト
 ```
 
 ---
 
-## Using with AI Agents
+## AIエージェントとの連携
 
-This project is designed to integrate with AI coding assistants, enabling AI to directly query and cite Bible verses. Below are setup guides for Claude Code, Hermes Agent, and OpenClaw.
+このプロジェクトはAIコーディングアシスタントとの統合を想定して設計されており、AIが聖句を直接検索・引用できるようにします。以下にClaude Code、Hermes Agent、OpenClawのセットアップガイドを示します。
 
 ### Claude Code
 
-Claude Code is Anthropic's command-line AI coding assistant. You can teach it to use the Bible search skill via a CLAUDE.md file.
+Claude CodeはAnthropicのCLI AIコーディングアシスタントです。CLAUDE.mdファイルを使って聖書検索スキルを教えることができます。
 
-**Step 1: Install Bible Data**
+**ステップ1：聖書データをインストール**
 
 ```bash
 # Clone the repo and run the install script
@@ -443,9 +434,9 @@ cd bible-skill
 bash scripts/install.sh
 ```
 
-**Step 2: Create CLAUDE.md in your project root**
+**ステップ2：プロジェクトルートにCLAUDE.mdを作成**
 
-Create a `CLAUDE.md` file in your project root (or any working directory) with the following content:
+プロジェクトルート（または任意の作業ディレクトリ）に `CLAUDE.md` ファイルを作成し、以下の内容を記述します：
 
 ```markdown
 # Bible Search Tool
@@ -464,9 +455,9 @@ To query Bible verses, run:
 Supports Chinese book names (创世记), abbreviations (创), and English names (Genesis). Use the terminal tool to execute commands.
 ```
 
-**Step 3: Use**
+**ステップ3：使用する**
 
-Ask Claude Code in natural language:
+自然言語でClaude Codeに質問します：
 
 ```
 > Look up John 3:16
@@ -474,67 +465,67 @@ Ask Claude Code in natural language:
 > List all books of the Bible
 ```
 
-Claude Code will automatically call the search script based on the CLAUDE.md instructions.
+Claude CodeはCLAUDE.mdの指示に基づいて自動的に検索スクリプトを呼び出します。
 
-> **Tip**: If the install path is not the default `/usr/local/share/bible-txt-file/`, replace the paths in CLAUDE.md with your actual path. Test with `python3 scripts/bible_search.py info Genesis` to verify it works.
+> **ヒント**: インストールパスがデフォルトの `/usr/local/share/bible-txt-file/` でない場合、CLAUDE.md内のパスを実際のパスに置き換えてください。`python3 scripts/bible_search.py info Genesis` で動作確認できます。
 
 ---
 
 ### Hermes Agent
 
-Hermes Agent has a built-in skill system — this repository is itself a skill package designed for Hermes.
+Hermes Agentにはビルトインのスキルシステムがあり、このリポジトリ自体がHermes向けに設計されたスキルパッケージです。
 
-**Option 1: Auto-load via SKILL.md (Recommended)**
+**方法1：SKILL.mdによる自動ロード（推奨）**
 
-1. Clone this repo into the Hermes skills directory:
+1. このリポジトリをHermesスキルディレクトリにクローン：
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git ~/.hermes/skills/bible
 ```
 
-2. Hermes Agent automatically loads `~/.hermes/skills/bible/SKILL.md` on startup — no extra configuration needed.
+2. Hermes Agentは起動時に自動的に `~/.hermes/skills/bible/SKILL.md` をロードします — 追加の設定は不要です。
 
-3. Install the Bible data:
+3. 聖書データをインストール：
 
 ```bash
 cd ~/.hermes/skills/bible
 bash scripts/install.sh
 ```
 
-4. Just talk to Hermes:
+4. Hermesに話しかけるだけ：
 
 ```
 Look up Psalm 23
 Search for Bible verses about "peace"
 ```
 
-**Option 2: Custom Skill Path**
+**方法2：カスタムスキルパス**
 
-If you prefer a different location, add the skill path in your Hermes config:
+別の場所を使用したい場合、Hermes設定にスキルパスを追加します：
 
 ```yaml
 skills:
   - path: /your/custom/path/bible-skill/SKILL.md
 ```
 
-Then run the install script:
+その後、インストールスクリプトを実行：
 
 ```bash
 cd /your/custom/path/bible-skill
 bash scripts/install.sh
 ```
 
-> **Tip**: SKILL.md already contains complete installation and usage instructions. Once Hermes loads it, it will automatically understand how to invoke the tool. If you change the install path, update the `BIBLE_DIR` variable in SKILL.md accordingly.
+> **ヒント**: SKILL.mdにはインストールと使用方法の完全な手順が既に含まれています。Hermesがロードすると、ツールの呼び出し方を自動的に理解します。インストールパスを変更した場合は、SKILL.md内の `BIBLE_DIR` 変数も適宜更新してください。
 
 ---
 
 ### OpenClaw
 
-OpenClaw is an open-source AI Agent framework that supports integrating external capabilities via MCP (Model Context Protocol) or custom tools.
+OpenClawは、MCP（Model Context Protocol）またはカスタムツールを通じて外部機能の統合をサポートするオープンソースAIエージェントフレームワークです。
 
-**Option 1: Custom Tool Integration**
+**方法1：カスタムツール統合**
 
-1. Install the Bible data and search script:
+1. 聖書データと検索スクリプトをインストール：
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
@@ -542,7 +533,7 @@ cd bible-skill
 bash scripts/install.sh
 ```
 
-2. Add the tool to your OpenClaw config file (typically `tools.yaml` or `config.yaml`):
+2. OpenClawの設定ファイル（通常は `tools.yaml` または `config.yaml`）にツールを追加：
 
 ```yaml
 tools:
@@ -574,17 +565,17 @@ tools:
         required: false
 ```
 
-3. Restart OpenClaw and use:
+3. OpenClawを再起動して使用：
 
 ```
 Please look up John 3:16
 ```
 
-**Option 2: MCP Server Integration**
+**方法2：MCPサーバー統合**
 
-If you prefer the MCP approach, create a simple MCP Server wrapper:
+MCPアプローチを好む場合は、シンプルなMCPサーバーラッパーを作成します：
 
-1. Create `/usr/local/share/bible-txt-file/bible_mcp_server.py`:
+1. `/usr/local/share/bible-txt-file/bible_mcp_server.py` を作成：
 
 ```python
 #!/usr/bin/env python3
@@ -641,7 +632,7 @@ for line in sys.stdin:
     print(json.dumps(response), flush=True)
 ```
 
-2. Register the MCP Server in your OpenClaw config:
+2. OpenClawの設定にMCPサーバーを登録：
 
 ```yaml
 mcp_servers:
@@ -651,9 +642,9 @@ mcp_servers:
     transport: stdio
 ```
 
-3. Restart OpenClaw — the AI can now query the Bible via the MCP protocol.
+3. OpenClawを再起動 — AIがMCPプロトコル経由で聖書を検索できるようになります。
 
-> **Tip**: Option 1 is simpler and great for quick setup; Option 2 is more standardized and better for multi-agent setups. Choose based on your needs.
+> **ヒント**: 方法1はシンプルで迅速なセットアップに適しています。方法2はより標準化されており、マルチエージェント構成に適しています。用途に応じて選択してください。
 
 ---
 
@@ -661,37 +652,37 @@ mcp_servers:
 
 ### Q: `python3: command not found`
 
-Python 3 is not installed. See [Requirements](#requirements) for installation instructions.
+Python 3がインストールされていません。[要件](#要件)のインストール手順を参照してください。
 
 ### Q: `No such file or directory`
 
-The Bible data directory path is incorrect. Check the `BIBLE_DIR` variable in `scripts/bible_search.py` and make sure the directory exists and contains 66 .txt files.
+聖書データディレクトリのパスが正しくありません。`scripts/bible_search.py` の `BIBLE_DIR` 変数を確認し、ディレクトリが存在し、66の.txtファイルが含まれていることを確認してください。
 
-### Q: `未找到卷名: xxx` (Book name not found)
+### Q: `未找到卷名: xxx`（書名が見つかりません）
 
-The book name or abbreviation you entered is not in the mapping table. See [Book Name Abbreviations](#book-name-abbreviations), or add a custom abbreviation to the `BOOK_MAP` dictionary in `scripts/bible_search.py`.
+入力した書名または略称がマッピングテーブルにありません。[書名の略称](#書名の略称)を参照するか、`scripts/bible_search.py` の `BOOK_MAP` 辞書にカスタム略称を追加してください。
 
-### Q: Verse numbers are garbled or content is incomplete
+### Q: 節番号が文字化けする、または内容が不完全
 
-The .txt file format is incorrect. Check against the [Data Format](#data-format) section.
+.txtファイルの形式が正しくありません。[データ形式](#データ形式)のセクションに照らして確認してください。
 
 ### Q: `Permission denied`
 
-The script doesn't have execute permission. Run:
+スクリプトに実行権限がありません。以下を実行してください：
 
 ```bash
 chmod +x scripts/bible_search.py
 ```
 
-### Q: Not enough search results
+### Q: 検索結果が足りない
 
-Search returns up to 20 results by default. Open `scripts/bible_search.py`, find `search_bible(keyword, max_results=20)`, and change `20` to your desired number.
+検索はデフォルトで最大20件の結果を返します。`scripts/bible_search.py` を開き、`search_bible(keyword, max_results=20)` の `20` を希望の数に変更してください。
 
 ---
 
-## License
+## ライセンス
 
-This project is licensed under the [MIT License](LICENSE).
+このプロジェクトは[MIT License](LICENSE)の下でライセンスされています。
 
 ```
 MIT License
@@ -717,4 +708,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-In short: you are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell this software, provided you include the copyright notice and license notice. The software is provided "as is", without warranty of any kind.
+要するに：著作権表示とライセンス表示を含める条件で、このソフトウェアの使用、複製、変更、統合、公開、配布、サブライセンス、販売を自由に行うことができます。本ソフトウェアは「現状のまま」提供され、いかなる種類の保証も伴いません。

@@ -1,110 +1,110 @@
-# Chinese Bible Search Skill
+# Outil de recherche dans la Bible chinoise
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.6+](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/)
 
-[中文文档](README.md) | [Español](README_ES.md) | [Français](README_FR.md) | [Deutsch](README_DE.md) | [日本語](README_JA.md) | [한국어](README_KO.md) | [Português](README_PT.md) | [Русский](README_RU.md) | [العربية](README_AR.md) | [Italiano](README_IT.md) | [Nederlands](README_NL.md)
+[Français](README_FR.md) | [中文](README.md) | [English](README_EN.md)
 
-A local, offline Chinese Bible (Union Version / 和合本) search tool. Query verses by book name, chapter, verse, or keyword — zero dependencies, ready to use.
+Un outil local hors ligne de recherche dans la Bible chinoise (Version Union / 和合本). Recherchez des versets par nom de livre, chapitre, verset ou mot-clé — zéro dépendance, prêt à l'emploi.
 
 ---
 
-## Table of Contents
+## Table des matières
 
-- [Features](#features)
-- [Requirements](#requirements)
+- [Fonctionnalités](#fonctionnalités)
+- [Prérequis](#prérequis)
 - [Installation](#installation)
-  - [Option 1: One-Click Install (Recommended)](#option-1-one-click-install-recommended)
-  - [Option 2: Manual Install](#option-2-manual-install)
-  - [Option 3: Clone & Run](#option-3-clone--run)
-- [Usage](#usage)
-  - [1. List All 66 Books](#1-list-all-66-books)
-  - [2. View Book Info](#2-view-book-info)
-  - [3. View an Entire Chapter](#3-view-an-entire-chapter)
-  - [4. View a Single Verse](#4-view-a-single-verse)
-  - [5. View a Verse Range](#5-view-a-verse-range)
-  - [6. Full-Text Search](#6-full-text-search)
-- [Book Name Abbreviations](#book-name-abbreviations)
-- [Data Format](#data-format)
-- [File Structure](#file-structure)
-- [Using with AI Agents](#using-with-ai-agents)
+  - [Option 1 : Installation en un clic (Recommandée)](#option-1--installation-en-un-clic-recommandée)
+  - [Option 2 : Installation manuelle](#option-2--installation-manuelle)
+  - [Option 3 : Cloner et exécuter](#option-3--cloner-et-exécuter)
+- [Utilisation](#utilisation)
+  - [1. Lister les 66 livres](#1-lister-les-66-livres)
+  - [2. Afficher les informations d'un livre](#2-afficher-les-informations-dun-livre)
+  - [3. Afficher un chapitre entier](#3-afficher-un-chapitre-entier)
+  - [4. Afficher un verset unique](#4-afficher-un-verset-unique)
+  - [5. Afficher une plage de versets](#5-afficher-une-plage-de-versets)
+  - [6. Recherche en texte intégral](#6-recherche-en-texte-intégral)
+- [Abréviations des noms de livres](#abréviations-des-noms-de-livres)
+- [Format des données](#format-des-données)
+- [Structure des fichiers](#structure-des-fichiers)
+- [Utilisation avec des agents IA](#utilisation-avec-des-agents-ia)
   - [Claude Code](#claude-code)
   - [Hermes Agent](#hermes-agent)
   - [OpenClaw](#openclaw)
 - [FAQ](#faq)
-- [License](#license)
+- [Licence](#licence)
 
 ---
 
-## Features
+## Fonctionnalités
 
-- 📖 List all 66 books of the Bible
-- 🔍 Query verses by full name or abbreviation (whole chapter, single verse, verse range)
-- 🗂️ View book info (chapter count, verse count)
-- 🔎 Full-text keyword search (returns up to 20 results by default)
-- 📦 One-click install script with bundled data archive
-- 🚀 Zero third-party dependencies — only Python 3.6+ required
+- 📖 Lister les 66 livres de la Bible
+- 🔍 Rechercher des versets par nom complet ou abréviation (chapitre entier, verset unique, plage de versets)
+- 🗂️ Afficher les informations d'un livre (nombre de chapitres, nombre de versets)
+- 🔎 Recherche en texte intégral par mot-clé (renvoie jusqu'à 20 résultats par défaut)
+- 📦 Script d'installation en un clic avec archive de données intégrée
+- 🚀 Zéro dépendance tierce — seul Python 3.6+ est requis
 
 ---
 
-## Requirements
+## Prérequis
 
-| Item | Requirement |
-|------|-------------|
-| Python | 3.6 or higher |
+| Élément | Prérequis |
+|---------|-----------|
+| Python | 3.6 ou supérieur |
 | OS | macOS / Linux / Windows |
-| Disk Space | ~5 MB (data + scripts) |
-| Dependencies | None |
+| Espace disque | ~5 Mo (données + scripts) |
+| Dépendances | Aucune |
 
 ---
 
 ## Installation
 
-### Option 1: One-Click Install (Recommended)
+### Option 1 : Installation en un clic (Recommandée)
 
-Best for beginners. Three commands and you're done.
+Idéal pour les débutants. Trois commandes et c'est terminé.
 
-**Step 1: Verify Python 3 is installed**
+**Étape 1 : Vérifier que Python 3 est installé**
 
 ```bash
 python3 --version
 ```
 
-If you get `command not found`, install Python 3 first:
+Si vous obtenez `command not found`, installez d'abord Python 3 :
 
-| System | How to Install |
-|--------|---------------|
-| macOS | `brew install python3` or download from [python.org](https://www.python.org/downloads/) |
+| Système | Comment installer |
+|---------|-------------------|
+| macOS | `brew install python3` ou télécharger depuis [python.org](https://www.python.org/downloads/) |
 | Ubuntu / Debian | `sudo apt update && sudo apt install python3` |
-| Windows | Download from [python.org](https://www.python.org/downloads/) — **make sure to check** "Add Python to PATH" during installation |
+| Windows | Télécharger depuis [python.org](https://www.python.org/downloads/) — **assurez-vous de cocher** « Add Python to PATH » lors de l'installation |
 
-**Step 2: Clone this repository**
+**Étape 2 : Cloner ce dépôt**
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
 cd bible-skill
 ```
 
-> No git? Click the green "Code" button on this page → "Download ZIP", then extract.
+> Pas de git ? Cliquez sur le bouton vert « Code » sur cette page → « Download ZIP », puis décompressez.
 
-**Step 3: Run the install script**
+**Étape 3 : Exécuter le script d'installation**
 
 ```bash
 bash scripts/install.sh
 ```
 
-The install script performs these steps automatically:
+Le script d'installation effectue automatiquement les étapes suivantes :
 
 ```
-[Step 1/6] Check Python 3           → Verify Python 3 is available
-[Step 2/6] Set Bible data directory  → Default: ~/bible-data/
-[Step 3/6] Extract Bible text data   → Unpack 66 .txt files from bundled archive
-[Step 4/6] Create skill directory    → Create ~/.hermes/skills/creative/bible/
-[Step 5/6] Configure search script   → Auto-update data path
-[Step 6/6] Verify installation       → Run 4 tests to confirm everything works
+|[Step 1/6] Check Python 3           → Verify Python 3 is available
+|[Step 2/6] Set Bible data directory  → Default: ~/bible-data/
+|[Step 3/6] Extract Bible text data   → Unpack 66 .txt files from bundled archive
+|[Step 4/6] Create skill directory    → Create ~/.hermes/skills/creative/bible/
+|[Step 5/6] Configure search script   → Auto-update data path
+|[Step 6/6] Verify installation       → Run 4 tests to confirm everything works
 ```
 
-To use a custom data directory:
+Pour utiliser un répertoire de données personnalisé :
 
 ```bash
 bash scripts/install.sh /your/custom/path
@@ -112,49 +112,49 @@ bash scripts/install.sh /your/custom/path
 
 ---
 
-### Option 2: Manual Install
+### Option 2 : Installation manuelle
 
-For users who want to understand each step.
+Pour les utilisateurs qui souhaitent comprendre chaque étape.
 
-**Step 1: Clone this repository**
+**Étape 1 : Cloner ce dépôt**
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
 cd bible-skill
 ```
 
-**Step 2: Create data directory and extract data**
+**Étape 2 : Créer le répertoire de données et extraire les données**
 
 ```bash
 mkdir -p ~/bible-data
 tar xzf assets/bible-txt-file.tar.gz -C ~/bible-data --strip-components=1
 ```
 
-**Step 3: Verify file count**
+**Étape 3 : Vérifier le nombre de fichiers**
 
 ```bash
 ls ~/bible-data/*.txt | wc -l
 ```
 
-Should output `66`. If not, re-download this project.
+Le résultat devrait être `66`. Si ce n'est pas le cas, re-téléchargez ce projet.
 
-**Step 4: Update the data path in the script**
+**Étape 4 : Mettre à jour le chemin des données dans le script**
 
-Open `scripts/bible_search.py` and find this line near the top:
+Ouvrez `scripts/bible_search.py` et trouvez cette ligne vers le début :
 
 ```python
 BIBLE_DIR = os.path.expanduser("~/workspace/20260413/bible-txt-file")
 ```
 
-Change it to your actual data path:
+Modifiez-la avec votre chemin de données réel :
 
 ```python
 BIBLE_DIR = os.path.expanduser("~/bible-data")
 ```
 
-> 💡 You can also use an absolute path, e.g. `BIBLE_DIR = "/Users/yourname/bible-data"`
+> 💡 Vous pouvez aussi utiliser un chemin absolu, par ex. `BIBLE_DIR = "/Users/yourname/bible-data"`
 
-**Step 5: Verify installation**
+**Étape 5 : Vérifier l'installation**
 
 ```bash
 # Test 1: List all 66 books
@@ -174,13 +174,13 @@ python3 scripts/bible_search.py info 诗篇
 # Expected: 【诗篇】共 150 章，2461 节
 ```
 
-All 4 tests passing means installation is successful!
+Les 4 tests réussis signifient que l'installation est réussie !
 
 ---
 
-### Option 3: Clone & Run
+### Option 3 : Cloner et exécuter
 
-For developers who want to use the scripts directly without the install script:
+Pour les développeurs qui souhaitent utiliser les scripts directement sans le script d'installation :
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
@@ -196,51 +196,51 @@ python3 scripts/bible_search.py 创 1:1
 
 ---
 
-## Usage
+## Utilisation
 
-Basic command format:
+Format de commande de base :
 
 ```bash
 python3 scripts/bible_search.py <command>
 ```
 
-> 💡 The examples below assume you're in the project root directory. Otherwise, use the full path to the script.
+> 💡 Les exemples ci-dessous supposent que vous êtes dans le répertoire racine du projet. Sinon, utilisez le chemin complet vers le script.
 
-### 1. List All 66 Books
+### 1. Lister les 66 livres
 
 ```bash
 python3 scripts/bible_search.py list
 ```
 
-Example output:
+Exemple de sortie :
 ```
-旧约（39卷）:
+旧约（39卷）：
    1 创世记
    2 出埃及记
    3 利未记
    ...
-新约（27卷）:
+新约（27卷）：
   40 马太福音
   41 马可福音
   ...
 ```
 
-### 2. View Book Info
+### 2. Afficher les informations d'un livre
 
-Supports full Chinese names or abbreviations:
+Prend en charge les noms chinois complets ou les abréviations :
 
 ```bash
 python3 scripts/bible_search.py info 创世记
 python3 scripts/bible_search.py info 太
 ```
 
-Example output:
+Exemple de sortie :
 ```
 【创世记】共 50 章，1533 节
 【马太福音】共 28 章，1071 节
 ```
 
-### 3. View an Entire Chapter
+### 3. Afficher un chapitre entier
 
 ```bash
 python3 scripts/bible_search.py 创世记 1
@@ -248,7 +248,7 @@ python3 scripts/bible_search.py 太 5
 python3 scripts/bible_search.py 诗 23
 ```
 
-Example output:
+Exemple de sortie :
 ```
 【诗篇 第23章】
 1 耶和华是我的牧者，我必不至缺乏。
@@ -256,9 +256,9 @@ Example output:
 ...
 ```
 
-### 4. View a Single Verse
+### 4. Afficher un verset unique
 
-Format: `BookName Chapter:Verse`
+Format : `NomDuLivre Chapitre:Verset`
 
 ```bash
 python3 scripts/bible_search.py 创 1:1
@@ -266,22 +266,22 @@ python3 scripts/bible_search.py 约 3:16
 python3 scripts/bible_search.py 诗 23:1
 ```
 
-Example output:
+Exemple de sortie :
 ```
 【约翰福音 3:16】
 16 "　神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。
 ```
 
-### 5. View a Verse Range
+### 5. Afficher une plage de versets
 
-Format: `BookName Chapter:StartVerse-EndVerse`
+Format : `NomDuLivre Chapitre:VersetDébut-VersetFin`
 
 ```bash
 python3 scripts/bible_search.py 太 5:3-12
 python3 scripts/bible_search.py 创 1:1-5
 ```
 
-Example output:
+Exemple de sortie :
 ```
 【马太福音 5:3-12】
 3 虚心的人有福了！因为天国是他们的。
@@ -289,9 +289,9 @@ Example output:
 ...
 ```
 
-### 6. Full-Text Search
+### 6. Recherche en texte intégral
 
-Search across all 66 books for verses containing a keyword:
+Recherchez dans les 66 livres les versets contenant un mot-clé :
 
 ```bash
 python3 scripts/bible_search.py search 耶和华是我的牧者
@@ -299,25 +299,25 @@ python3 scripts/bible_search.py search 神爱世人
 python3 scripts/bible_search.py search 以马内利
 ```
 
-Example output:
+Exemple de sortie :
 ```
 【约翰福音 3:16】"　神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。
 【约翰一书 4:9】　神差他独生子到世间来，使我们借着他得生，　神爱我们的心在此就显明了。
 ...
 ```
 
-> 💡 Search returns up to 20 results by default. To change this, open `scripts/bible_search.py`, find `search_bible(keyword, max_results=20)`, and change `20` to your desired number.
+> 💡 La recherche renvoie jusqu'à 20 résultats par défaut. Pour modifier cela, ouvrez `scripts/bible_search.py`, trouvez `search_bible(keyword, max_results=20)`, et remplacez `20` par le nombre souhaité.
 
 ---
 
-## Book Name Abbreviations
+## Abréviations des noms de livres
 
-The tool supports both full Chinese names and common abbreviations:
+L'outil prend en charge les noms chinois complets et les abréviations courantes :
 
-### Old Testament (39 Books)
+### Ancien Testament (39 livres)
 
-| Abbr | Full Name (Chinese) | English Name | Abbr | Full Name (Chinese) | English Name |
-|------|---------------------|--------------|------|---------------------|--------------|
+| Abrév | Nom complet (chinois) | Nom anglais | Abrév | Nom complet (chinois) | Nom anglais |
+|-------|----------------------|-------------|-------|----------------------|-------------|
 | 创 | 创世记 | Genesis | 拿 | 约拿书 | Jonah |
 | 出 | 出埃及记 | Exodus | 弥 | 弥迦书 | Micah |
 | 利 | 利未记 | Leviticus | 鸿 | 那鸿书 | Nahum |
@@ -339,10 +339,10 @@ The tool supports both full Chinese names and common abbreviations:
 | 珥 | 约珥书 | Joel | 摩 | 阿摩司书 | Amos |
 | 俄 | 俄巴底亚书 | Obadiah | | | |
 
-### New Testament (27 Books)
+### Nouveau Testament (27 livres)
 
-| Abbr | Full Name (Chinese) | English Name | Abbr | Full Name (Chinese) | English Name |
-|------|---------------------|--------------|------|---------------------|--------------|
+| Abrév | Nom complet (chinois) | Nom anglais | Abrév | Nom complet (chinois) | Nom anglais |
+|-------|----------------------|-------------|-------|----------------------|-------------|
 | 太 | 马太福音 | Matthew | 提前 | 提摩太前书 | 1 Timothy |
 | 可 | 马可福音 | Mark | 提后 | 提摩太后书 | 2 Timothy |
 | 路 | 路加福音 | Luke | 多 | 提多书 | Titus |
@@ -360,81 +360,72 @@ The tool supports both full Chinese names and common abbreviations:
 
 ---
 
-## Data Format
+## Format des données
 
-This project uses the Chinese Union Version (和合本, CUV) Bible text, stored as 66 plain text files.
+Ce projet utilise le texte de la Bible en chinois Version Union (和合本, CUV), stocké sous forme de 66 fichiers texte brut.
 
-### File Naming
+### Nommage des fichiers
 
-`Number+BookName.txt`, numbered 1–66:
+`Numéro+NomDuLivre.txt`, numérotés de 1 à 66 :
 
 ```
 1创世记.txt   2出埃及记.txt   3利未记.txt   ...   66启示录.txt
 ```
 
-### File Content Format
+### Format du contenu des fichiers
 
-Within each file, **each line represents one entire chapter**:
+Dans chaque fichier, **chaque ligne représente un chapitre entier** :
 
 ```
-第X章1Verse one text2Verse two text3Verse three text...NLast verse text
+第X章1Texte du premier verset2Texte du deuxième verset3Texte du troisième verset...NTexte du dernier verset
 ```
 
-Rules:
-- Line starts with `第X章` (X is an Arabic numeral, e.g. `第1章`, `第23章`)
-- Immediately followed by verse number (digits) + verse text
-- **No space** between verse number and text
-- After one verse ends, the next verse number follows immediately
-- Each chapter occupies exactly one line (no line breaks within a chapter)
-- File encoding: **UTF-8**
+Règles :
+- La ligne commence par `第X章` (X est un chiffre arabe, par ex. `第1章`, `第23章`)
+- Suivi immédiatement du numéro du verset (chiffres) + texte du verset
+- **Aucun espace** entre le numéro du verset et le texte
+- Après la fin d'un verset, le numéro du verset suivant suit immédiatement
+- Chaque chapitre occupe exactement une ligne (aucun saut de ligne dans un chapitre)
+- Encodage du fichier : **UTF-8**
 
-Real example (Genesis 1:1-5):
+Exemple réel (Genèse 1:1-5) :
 
 ```
 第1章1起初　神创造天地。2地是空虚混沌，渊面黑暗；　神的灵运行在水面上。3　神说："要有光。"就有了光。4　神看光是好的，就把光暗分开了。5　神称光为"昼"，称暗为"夜"。有晚上，有早晨，这是头一日。
 ```
 
-If you have Bible data in a different format, see [SKILL.md](SKILL.md) for a conversion script.
+Si vous disposez de données bibliques dans un format différent, consultez [SKILL.md](SKILL.md) pour un script de conversion.
 
 ---
 
-## File Structure
+## Structure des fichiers
 
 ```
 bible-skill/
-├── README.md                     ← This file (Chinese)
-├── README_EN.md                  ← English documentation
-├── README_ES.md                  ← Documentación en Español
-├── README_FR.md                  ← Documentation en Français
-├── README_DE.md                  ← Dokumentation auf Deutsch
-├── README_JA.md                  ← 日本語ドキュメント
-├── README_KO.md                  ← 한국어 문서
-├── README_PT.md                  ← Documentação em Português
-├── README_RU.md                  ← Документация на Русском
-├── README_AR.md                  ← التوثيق بالعربية
-├── README_IT.md                  ← Documentazione in Italiano
-├── README_NL.md                  ← Nederlandse documentatie
-├── LICENSE                       ← MIT License
-├── SKILL.md                      ← Hermes Agent skill doc (detailed manual install guide)
+├── README.md                     ← Ce fichier (chinois)
+├── README_EN.md                  ← Documentation en anglais
+├── README_FR.md                  ← Documentation en français
+├── LICENSE                       ← Licence MIT
+├── SKILL.md                      ← Doc du skill Hermes Agent (guide d'installation manuelle détaillé)
 ├── .gitignore
 ├── assets/
-│   └── bible-txt-file.tar.gz     ← Bible data archive (66 books, ~1.2 MB)
+│   └── bible-txt-file.tar.gz     ← Archive des données bibliques (66 livres, ~1,2 Mo)
 └── scripts/
-    ├── bible_search.py           ← Core search script (Python 3, zero dependencies)
-    └── install.sh                ← One-click install script
+    ├── bible_search.py           ← Script de recherche principal (Python 3, zéro dépendance)
+    └── install.sh                ← Script d'installation en un clic
 ```
 
 ---
 
-## Using with AI Agents
+## Utilisation avec des agents IA
 
-This project is designed to integrate with AI coding assistants, enabling AI to directly query and cite Bible verses. Below are setup guides for Claude Code, Hermes Agent, and OpenClaw.
+Ce projet est conçu pour s'intégrer aux assistants de codage IA, permettant à l'IA de rechercher et de citer directement des versets bibliques. Ci-dessous, les guides de configuration pour Claude Code, Hermes Agent et OpenClaw.
 
 ### Claude Code
 
-Claude Code is Anthropic's command-line AI coding assistant. You can teach it to use the Bible search skill via a CLAUDE.md file.
+Claude Code est l'assistant de codage IA en ligne de commande d'Anthropic. Vous pouvez lui apprendre à utiliser l'outil de recherche biblique via un fichier CLAUDE.md.
 
-**Step 1: Install Bible Data**
+**Étape 1 : Installer les données bibliques**
 
 ```bash
 # Clone the repo and run the install script
@@ -443,9 +434,9 @@ cd bible-skill
 bash scripts/install.sh
 ```
 
-**Step 2: Create CLAUDE.md in your project root**
+**Étape 2 : Créer CLAUDE.md à la racine de votre projet**
 
-Create a `CLAUDE.md` file in your project root (or any working directory) with the following content:
+Créez un fichier `CLAUDE.md` à la racine de votre projet (ou dans tout répertoire de travail) avec le contenu suivant :
 
 ```markdown
 # Bible Search Tool
@@ -464,9 +455,9 @@ To query Bible verses, run:
 Supports Chinese book names (创世记), abbreviations (创), and English names (Genesis). Use the terminal tool to execute commands.
 ```
 
-**Step 3: Use**
+**Étape 3 : Utiliser**
 
-Ask Claude Code in natural language:
+Posez vos questions à Claude Code en langage naturel :
 
 ```
 > Look up John 3:16
@@ -474,67 +465,67 @@ Ask Claude Code in natural language:
 > List all books of the Bible
 ```
 
-Claude Code will automatically call the search script based on the CLAUDE.md instructions.
+Claude Code appellera automatiquement le script de recherche en fonction des instructions du fichier CLAUDE.md.
 
-> **Tip**: If the install path is not the default `/usr/local/share/bible-txt-file/`, replace the paths in CLAUDE.md with your actual path. Test with `python3 scripts/bible_search.py info Genesis` to verify it works.
+> **Astuce** : Si le chemin d'installation n'est pas le chemin par défaut `/usr/local/share/bible-txt-file/`, remplacez les chemins dans CLAUDE.md par votre chemin réel. Testez avec `python3 scripts/bible_search.py info Genesis` pour vérifier que cela fonctionne.
 
 ---
 
 ### Hermes Agent
 
-Hermes Agent has a built-in skill system — this repository is itself a skill package designed for Hermes.
+Hermes Agent dispose d'un système de skills intégré — ce dépôt est lui-même un paquet de skill conçu pour Hermes.
 
-**Option 1: Auto-load via SKILL.md (Recommended)**
+**Option 1 : Chargement automatique via SKILL.md (Recommandé)**
 
-1. Clone this repo into the Hermes skills directory:
+1. Clonez ce dépôt dans le répertoire des skills de Hermes :
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git ~/.hermes/skills/bible
 ```
 
-2. Hermes Agent automatically loads `~/.hermes/skills/bible/SKILL.md` on startup — no extra configuration needed.
+2. Hermes Agent charge automatiquement `~/.hermes/skills/bible/SKILL.md` au démarrage — aucune configuration supplémentaire n'est nécessaire.
 
-3. Install the Bible data:
+3. Installez les données bibliques :
 
 ```bash
 cd ~/.hermes/skills/bible
 bash scripts/install.sh
 ```
 
-4. Just talk to Hermes:
+4. Parlez simplement à Hermes :
 
 ```
 Look up Psalm 23
 Search for Bible verses about "peace"
 ```
 
-**Option 2: Custom Skill Path**
+**Option 2 : Chemin de skill personnalisé**
 
-If you prefer a different location, add the skill path in your Hermes config:
+Si vous préférez un emplacement différent, ajoutez le chemin du skill dans votre configuration Hermes :
 
 ```yaml
 skills:
   - path: /your/custom/path/bible-skill/SKILL.md
 ```
 
-Then run the install script:
+Puis exécutez le script d'installation :
 
 ```bash
 cd /your/custom/path/bible-skill
 bash scripts/install.sh
 ```
 
-> **Tip**: SKILL.md already contains complete installation and usage instructions. Once Hermes loads it, it will automatically understand how to invoke the tool. If you change the install path, update the `BIBLE_DIR` variable in SKILL.md accordingly.
+> **Astuce** : SKILL.md contient déjà des instructions complètes d'installation et d'utilisation. Une fois que Hermes le charge, il comprendra automatiquement comment invoquer l'outil. Si vous modifiez le chemin d'installation, mettez à jour la variable `BIBLE_DIR` dans SKILL.md en conséquence.
 
 ---
 
 ### OpenClaw
 
-OpenClaw is an open-source AI Agent framework that supports integrating external capabilities via MCP (Model Context Protocol) or custom tools.
+OpenClaw est un framework d'agent IA open source qui prend en charge l'intégration de capacités externes via MCP (Model Context Protocol) ou des outils personnalisés.
 
-**Option 1: Custom Tool Integration**
+**Option 1 : Intégration d'outil personnalisé**
 
-1. Install the Bible data and search script:
+1. Installez les données bibliques et le script de recherche :
 
 ```bash
 git clone https://github.com/dockercore/bible-skill.git
@@ -542,7 +533,7 @@ cd bible-skill
 bash scripts/install.sh
 ```
 
-2. Add the tool to your OpenClaw config file (typically `tools.yaml` or `config.yaml`):
+2. Ajoutez l'outil à votre fichier de configuration OpenClaw (généralement `tools.yaml` ou `config.yaml`) :
 
 ```yaml
 tools:
@@ -574,17 +565,17 @@ tools:
         required: false
 ```
 
-3. Restart OpenClaw and use:
+3. Redémarrez OpenClaw et utilisez :
 
 ```
 Please look up John 3:16
 ```
 
-**Option 2: MCP Server Integration**
+**Option 2 : Intégration via serveur MCP**
 
-If you prefer the MCP approach, create a simple MCP Server wrapper:
+Si vous préférez l'approche MCP, créez un simple encapsuleur de serveur MCP :
 
-1. Create `/usr/local/share/bible-txt-file/bible_mcp_server.py`:
+1. Créez `/usr/local/share/bible-txt-file/bible_mcp_server.py` :
 
 ```python
 #!/usr/bin/env python3
@@ -641,7 +632,7 @@ for line in sys.stdin:
     print(json.dumps(response), flush=True)
 ```
 
-2. Register the MCP Server in your OpenClaw config:
+2. Enregistrez le serveur MCP dans votre configuration OpenClaw :
 
 ```yaml
 mcp_servers:
@@ -651,47 +642,47 @@ mcp_servers:
     transport: stdio
 ```
 
-3. Restart OpenClaw — the AI can now query the Bible via the MCP protocol.
+3. Redémarrez OpenClaw — l'IA peut maintenant interroger la Bible via le protocole MCP.
 
-> **Tip**: Option 1 is simpler and great for quick setup; Option 2 is more standardized and better for multi-agent setups. Choose based on your needs.
+> **Astuce** : L'Option 1 est plus simple et idéale pour une configuration rapide ; l'Option 2 est plus standardisée et mieux adaptée aux configurations multi-agents. Choisissez selon vos besoins.
 
 ---
 
 ## FAQ
 
-### Q: `python3: command not found`
+### Q : `python3: command not found`
 
-Python 3 is not installed. See [Requirements](#requirements) for installation instructions.
+Python 3 n'est pas installé. Consultez [Prérequis](#prérequis) pour les instructions d'installation.
 
-### Q: `No such file or directory`
+### Q : `No such file or directory`
 
-The Bible data directory path is incorrect. Check the `BIBLE_DIR` variable in `scripts/bible_search.py` and make sure the directory exists and contains 66 .txt files.
+Le chemin du répertoire des données bibliques est incorrect. Vérifiez la variable `BIBLE_DIR` dans `scripts/bible_search.py` et assurez-vous que le répertoire existe et contient 66 fichiers .txt.
 
-### Q: `未找到卷名: xxx` (Book name not found)
+### Q : `未找到卷名: xxx` (Nom de livre non trouvé)
 
-The book name or abbreviation you entered is not in the mapping table. See [Book Name Abbreviations](#book-name-abbreviations), or add a custom abbreviation to the `BOOK_MAP` dictionary in `scripts/bible_search.py`.
+Le nom de livre ou l'abréviation que vous avez saisi n'est pas dans la table de correspondance. Consultez [Abréviations des noms de livres](#abréviations-des-noms-de-livres), ou ajoutez une abréviation personnalisée au dictionnaire `BOOK_MAP` dans `scripts/bible_search.py`.
 
-### Q: Verse numbers are garbled or content is incomplete
+### Q : Les numéros de versets sont illisibles ou le contenu est incomplet
 
-The .txt file format is incorrect. Check against the [Data Format](#data-format) section.
+Le format du fichier .txt est incorrect. Vérifiez par rapport à la section [Format des données](#format-des-données).
 
-### Q: `Permission denied`
+### Q : `Permission denied`
 
-The script doesn't have execute permission. Run:
+Le script n'a pas la permission d'exécution. Exécutez :
 
 ```bash
 chmod +x scripts/bible_search.py
 ```
 
-### Q: Not enough search results
+### Q : Pas assez de résultats de recherche
 
-Search returns up to 20 results by default. Open `scripts/bible_search.py`, find `search_bible(keyword, max_results=20)`, and change `20` to your desired number.
+La recherche renvoie jusqu'à 20 résultats par défaut. Ouvrez `scripts/bible_search.py`, trouvez `search_bible(keyword, max_results=20)`, et remplacez `20` par le nombre souhaité.
 
 ---
 
-## License
+## Licence
 
-This project is licensed under the [MIT License](LICENSE).
+Ce projet est sous licence [MIT License](LICENSE).
 
 ```
 MIT License
@@ -717,4 +708,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-In short: you are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell this software, provided you include the copyright notice and license notice. The software is provided "as is", without warranty of any kind.
+En résumé : vous êtes libre d'utiliser, copier, modifier, fusionner, publier, distribuer, concéder sous licence et/ou vendre ce logiciel, à condition d'inclure l'avis de copyright et l'avis de licence. Le logiciel est fourni « en l'état », sans aucune garantie d'aucune sorte.
