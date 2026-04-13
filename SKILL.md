@@ -1,7 +1,7 @@
 ---
 name: bible
 description: 中文圣经经文查询技能 - 支持按卷名、章、节、关键词检索和引用经文
-version: 2.0
+version: 2.1
 triggers:
   - 圣经
   - 经文
@@ -11,7 +11,24 @@ triggers:
 
 # 中文圣经经文查询技能
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 基于本地 66 卷中文和合本圣经纯文本文件，提供经文查询、检索和引用功能。
+
+> 📦 项目仓库: https://github.com/dockercore/bible-skill
+> 📄 完整文档: [README.md](README.md) | 本文件为 Hermes Agent 技能文档
+
+---
+
+## 快速安装
+
+```bash
+git clone https://github.com/dockercore/bible-skill.git
+cd bible-skill
+bash scripts/install.sh
+```
+
+详细安装指南见 [README.md](README.md)。
 
 ---
 
@@ -30,26 +47,20 @@ triggers:
 打开终端（macOS 按 Cmd+空格搜"终端"，Windows 搜"PowerShell"），执行：
 
 ```bash
-# 1. 确认 Python 3 可用
+# 1. 下载项目
+git clone https://github.com/dockercore/bible-skill.git
+cd bible-skill
+
+# 2. 确认 Python 3 可用
 python3 --version
 # 应输出类似: Python 3.10.x 或更高版本
 # 如果报错"command not found"，请先安装 Python 3
 
-# 2. 创建 skill 目录
-mkdir -p ~/.hermes/skills/creative/bible/scripts
-mkdir -p ~/.hermes/skills/creative/bible/assets
+# 3. 运行一键安装脚本
+bash scripts/install.sh
 
-# 3. 将以下文件放到对应位置：
-#    - scripts/bible_search.py  → ~/.hermes/skills/creative/bible/scripts/bible_search.py
-#    - scripts/install.sh       → ~/.hermes/skills/creative/bible/scripts/install.sh
-#    - assets/bible-txt-file.tar.gz → ~/.hermes/skills/creative/bible/assets/bible-txt-file.tar.gz
-#    - SKILL.md                 → ~/.hermes/skills/creative/bible/SKILL.md
-
-# 4. 运行一键安装脚本
-bash ~/.hermes/skills/creative/bible/scripts/install.sh
-
-# 5. 如果想自定义数据目录（默认装到 ~/bible-data/）：
-bash ~/.hermes/skills/creative/bible/scripts/install.sh /你/想/放/的/路径
+# 4. 如果想自定义数据目录（默认装到 ~/bible-data/）：
+bash scripts/install.sh /你/想/放/的/路径
 ```
 
 安装脚本会自动完成：解压数据 → 创建目录 → 配置路径 → 验证安装，并在每步给出结果反馈。
@@ -431,11 +442,19 @@ python3 ~/.hermes/skills/creative/bible/scripts/bible_search.py search 神爱世
 ## 文件结构
 
 ```
-~/.hermes/skills/creative/bible/
-├── SKILL.md                          # 本文档
+bible-skill/
+├── README.md                     # 完整文档（安装 + 使用）
+├── LICENSE                       # MIT 开源协议
+├── SKILL.md                      # 本文件（Hermes Agent 技能文档）
 ├── assets/
-│   └── bible-txt-file.tar.gz         # 圣经数据压缩包（66卷，约1.2MB）
+│   └── bible-txt-file.tar.gz     # 圣经数据压缩包（66卷，约1.2MB）
 └── scripts/
-    ├── bible_search.py               # 核心搜索脚本（Python 3，无第三方依赖）
-    └── install.sh                    # 一键安装脚本
+    ├── bible_search.py           # 核心搜索脚本（Python 3，无第三方依赖）
+    └── install.sh                # 一键安装脚本
 ```
+
+## 开源协议
+
+本项目基于 [MIT 协议](LICENSE) 开源。
+
+Copyright (c) 2026 dockercore
