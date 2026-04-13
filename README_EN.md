@@ -27,6 +27,10 @@ A local, offline Chinese Bible (Union Version / 和合本) search tool. Query ve
 - [Book Name Abbreviations](#book-name-abbreviations)
 - [Data Format](#data-format)
 - [File Structure](#file-structure)
+- [Using with AI Agents](#using-with-ai-agents)
+  - [Claude Code](#claude-code)
+  - [Hermes Agent](#hermes-agent)
+  - [OpenClaw](#openclaw)
 - [FAQ](#faq)
 - [License](#license)
 
@@ -409,6 +413,237 @@ bible-skill/
     ├── bible_search.py           ← Core search script (Python 3, zero dependencies)
     └── install.sh                ← One-click install script
 ```
+
+---
+
+## Using with AI Agents
+
+This project is designed to integrate with AI coding assistants, enabling AI to directly query and cite Bible verses. Below are setup guides for Claude Code, Hermes Agent, and OpenClaw.
+
+### Claude Code
+
+Claude Code is Anthropic's command-line AI coding assistant. You can teach it to use the Bible search skill via a CLAUDE.md file.
+
+**Step 1: Install Bible Data**
+
+```bash
+# Clone the repo and run the install script
+git clone https://github.com/dockercore/bible-skill.git
+cd bible-skill
+bash scripts/install.sh
+```
+
+**Step 2: Create CLAUDE.md in your project root**
+
+Create a `CLAUDE.md` file in your project root (or any working directory) with the following content:
+
+```markdown
+# Bible Search Tool
+
+The Bible search tool is installed at /usr/local/share/bible-txt-file/.
+
+To query Bible verses, run:
+
+- List all 66 books: python3 /usr/local/share/bible-txt-file/bible_search.py list
+- View book info: python3 /usr/local/share/bible-txt-file/bible_search.py info Genesis
+- Read a chapter: python3 /usr/local/share/bible-txt-file/bible_search.py read Genesis 1
+- Read a verse: python3 /usr/local/share/bible-txt-file/bible_search.py read Genesis 1 1
+- Read a verse range: python3 /usr/local/share/bible-txt-file/bible_search.py read Genesis 1 1-5
+- Full-text search: python3 /usr/local/share/bible-txt-file/bible_search.py search grace
+
+Supports Chinese book names (创世记), abbreviations (创), and English names (Genesis). Use the terminal tool to execute commands.
+```
+
+**Step 3: Use**
+
+Ask Claude Code in natural language:
+
+```
+> Look up John 3:16
+> Search for Bible verses about "grace"
+> List all books of the Bible
+```
+
+Claude Code will automatically call the search script based on the CLAUDE.md instructions.
+
+> **Tip**: If the install path is not the default `/usr/local/share/bible-txt-file/`, replace the paths in CLAUDE.md with your actual path. Test with `python3 scripts/bible_search.py info Genesis` to verify it works.
+
+---
+
+### Hermes Agent
+
+Hermes Agent has a built-in skill system — this repository is itself a skill package designed for Hermes.
+
+**Option 1: Auto-load via SKILL.md (Recommended)**
+
+1. Clone this repo into the Hermes skills directory:
+
+```bash
+git clone https://github.com/dockercore/bible-skill.git ~/.hermes/skills/bible
+```
+
+2. Hermes Agent automatically loads `~/.hermes/skills/bible/SKILL.md` on startup — no extra configuration needed.
+
+3. Install the Bible data:
+
+```bash
+cd ~/.hermes/skills/bible
+bash scripts/install.sh
+```
+
+4. Just talk to Hermes:
+
+```
+Look up Psalm 23
+Search for Bible verses about "peace"
+```
+
+**Option 2: Custom Skill Path**
+
+If you prefer a different location, add the skill path in your Hermes config:
+
+```yaml
+skills:
+  - path: /your/custom/path/bible-skill/SKILL.md
+```
+
+Then run the install script:
+
+```bash
+cd /your/custom/path/bible-skill
+bash scripts/install.sh
+```
+
+> **Tip**: SKILL.md already contains complete installation and usage instructions. Once Hermes loads it, it will automatically understand how to invoke the tool. If you change the install path, update the `BIBLE_DIR` variable in SKILL.md accordingly.
+
+---
+
+### OpenClaw
+
+OpenClaw is an open-source AI Agent framework that supports integrating external capabilities via MCP (Model Context Protocol) or custom tools.
+
+**Option 1: Custom Tool Integration**
+
+1. Install the Bible data and search script:
+
+```bash
+git clone https://github.com/dockercore/bible-skill.git
+cd bible-skill
+bash scripts/install.sh
+```
+
+2. Add the tool to your OpenClaw config file (typically `tools.yaml` or `config.yaml`):
+
+```yaml
+tools:
+  - name: bible_search
+    description: "Chinese Bible (Union Version) search tool. Supports verse lookup by book name and full-text keyword search."
+    command: "python3"
+    args:
+      - "/usr/local/share/bible-txt-file/bible_search.py"
+    parameters:
+      - name: action
+        type: string
+        description: "Action: list (list books), info (book info), read (read verses), search (keyword search)"
+        required: true
+      - name: book
+        type: string
+        description: "Book name or abbreviation (e.g.: Genesis, Gen, 创世记, 创)"
+        required: false
+      - name: chapter
+        type: integer
+        description: "Chapter number"
+        required: false
+      - name: verse
+        type: string
+        description: "Verse number or range (e.g.: 1 or 1-5)"
+        required: false
+      - name: keyword
+        type: string
+        description: "Search keyword"
+        required: false
+```
+
+3. Restart OpenClaw and use:
+
+```
+Please look up John 3:16
+```
+
+**Option 2: MCP Server Integration**
+
+If you prefer the MCP approach, create a simple MCP Server wrapper:
+
+1. Create `/usr/local/share/bible-txt-file/bible_mcp_server.py`:
+
+```python
+#!/usr/bin/env python3
+"""Bible Search MCP Server for OpenClaw"""
+import json
+import sys
+import subprocess
+
+def handle_request(request):
+    method = request.get("method", "")
+    params = request.get("params", {})
+
+    if method == "tools/list":
+        return {
+            "tools": [{
+                "name": "bible_search",
+                "description": "Chinese Bible (Union Version) search tool",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "action": {"type": "string", "enum": ["list", "info", "read", "search"]},
+                        "book": {"type": "string"},
+                        "chapter": {"type": "integer"},
+                        "verse": {"type": "string"},
+                        "keyword": {"type": "string"}
+                    },
+                    "required": ["action"]
+                }
+            }]
+        }
+    elif method == "tools/call":
+        args = params.get("arguments", {})
+        cmd = ["python3", "/usr/local/share/bible-txt-file/bible_search.py"]
+        action = args.get("action", "")
+        cmd.append(action)
+        if action == "info":
+            cmd.append(args.get("book", ""))
+        elif action == "read":
+            cmd.append(args.get("book", ""))
+            cmd.append(str(args.get("chapter", "")))
+            if args.get("verse"):
+                cmd.append(str(args["verse"]))
+        elif action == "search":
+            cmd.append(args.get("keyword", ""))
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        return {"content": [{"type": "text", "text": result.stdout or result.stderr}]}
+
+for line in sys.stdin:
+    try:
+        request = json.loads(line)
+        response = {"jsonrpc": "2.0", "id": request.get("id"), "result": handle_request(request)}
+    except Exception as e:
+        response = {"jsonrpc": "2.0", "id": None, "error": {"code": -1, "message": str(e)}}
+    print(json.dumps(response), flush=True)
+```
+
+2. Register the MCP Server in your OpenClaw config:
+
+```yaml
+mcp_servers:
+  - name: bible-search
+    command: "python3"
+    args: ["/usr/local/share/bible-txt-file/bible_mcp_server.py"]
+    transport: stdio
+```
+
+3. Restart OpenClaw — the AI can now query the Bible via the MCP protocol.
+
+> **Tip**: Option 1 is simpler and great for quick setup; Option 2 is more standardized and better for multi-agent setups. Choose based on your needs.
 
 ---
 

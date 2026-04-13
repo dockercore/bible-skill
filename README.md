@@ -27,6 +27,10 @@
 - [卷名简称对照表](#卷名简称对照表)
 - [数据格式说明](#数据格式说明)
 - [文件结构](#文件结构)
+- [在 AI Agent 中使用](#在-ai-agent-中使用)
+  - [Claude Code](#claude-code)
+  - [Hermes Agent](#hermes-agent)
+  - [OpenClaw](#openclaw)
 - [常见问题](#常见问题)
 - [开源协议](#开源协议)
 
@@ -409,6 +413,237 @@ bible-skill/
     ├── bible_search.py           ← 核心搜索脚本（Python 3，零依赖）
     └── install.sh                ← 一键安装脚本
 ```
+
+---
+
+## 在 AI Agent 中使用
+
+本项目特别适合与 AI 编程助手集成，让 AI 能直接查询和引用圣经经文。以下分别介绍在 Claude Code、Hermes Agent 和 OpenClaw 中的使用方式。
+
+### Claude Code
+
+Claude Code 是 Anthropic 推出的命令行 AI 编程助手。通过 CLAUDE.md 文件可以让 Claude Code 了解如何使用圣经查询技能。
+
+**步骤 1：安装圣经数据**
+
+```bash
+# 克隆仓库并运行安装脚本
+git clone https://github.com/dockercore/bible-skill.git
+cd bible-skill
+bash scripts/install.sh
+```
+
+**步骤 2：在项目根目录创建 CLAUDE.md**
+
+在你的项目根目录（或任意工作目录）创建 `CLAUDE.md` 文件，写入以下内容：
+
+```markdown
+# Bible Search Tool
+
+圣经查询工具已安装在 /usr/local/share/bible-txt-file/ 目录下。
+
+查询经文时，运行以下命令：
+
+- 列出全部66卷: python3 /usr/local/share/bible-txt-file/bible_search.py list
+- 查看某卷信息: python3 /usr/local/share/bible-txt-file/bible_search.py info 创世记
+- 查看整章: python3 /usr/local/share/bible-txt-file/bible_search.py read 创世记 1
+- 查看某一节: python3 /usr/local/share/bible-txt-file/bible_search.py read 创世记 1 1
+- 查看节范围: python3 /usr/local/share/bible-txt-file/bible_search.py read 创世记 1 1-5
+- 全文搜索: python3 /usr/local/share/bible-txt-file/bible_search.py search 爱
+
+支持中文卷名(创世记)和简称(创、创世记、Genesis)。使用 terminal 工具执行命令。
+```
+
+**步骤 3：使用**
+
+在 Claude Code 中直接用自然语言提问：
+
+```
+> 帮我查一下约翰福音3章16节
+> 搜索圣经中关于"恩典"的经文
+> 列出圣经的所有书卷
+```
+
+Claude Code 会根据 CLAUDE.md 中的指引自动调用搜索脚本。
+
+> **提示**：如果安装路径不是默认的 `/usr/local/share/bible-txt-file/`，请将 CLAUDE.md 中的路径替换为实际路径。可通过 `python3 scripts/bible_search.py info 创世记` 测试是否正常工作。
+
+---
+
+### Hermes Agent
+
+Hermes Agent 内置技能系统（Skills），本仓库本身就是为 Hermes 设计的技能包。
+
+**方式一：通过 SKILL.md 自动加载（推荐）**
+
+1. 将本仓库克隆到 Hermes 技能目录：
+
+```bash
+git clone https://github.com/dockercore/bible-skill.git ~/.hermes/skills/bible
+```
+
+2. Hermes Agent 启动后会自动加载 `~/.hermes/skills/bible/SKILL.md`，无需额外配置。
+
+3. 安装圣经数据：
+
+```bash
+cd ~/.hermes/skills/bible
+bash scripts/install.sh
+```
+
+4. 直接对 Hermes 说：
+
+```
+查一下诗篇23篇
+搜索圣经中"平安"相关的经文
+```
+
+**方式二：手动指定技能路径**
+
+如果不想放在默认技能目录，可以在 Hermes 配置文件中添加技能路径：
+
+```yaml
+skills:
+  - path: /your/custom/path/bible-skill/SKILL.md
+```
+
+然后运行安装脚本：
+
+```bash
+cd /your/custom/path/bible-skill
+bash scripts/install.sh
+```
+
+> **提示**：SKILL.md 中已包含完整的安装指引和使用方法，Hermes 加载后即可自动理解如何调用。如果修改了安装路径，请同步更新 SKILL.md 中的 `BIBLE_DIR` 变量。
+
+---
+
+### OpenClaw
+
+OpenClaw 是一个开源的 AI Agent 框架，支持通过 MCP (Model Context Protocol) 或自定义工具集成外部能力。
+
+**方式一：作为自定义工具集成**
+
+1. 安装圣经数据和搜索脚本：
+
+```bash
+git clone https://github.com/dockercore/bible-skill.git
+cd bible-skill
+bash scripts/install.sh
+```
+
+2. 在 OpenClaw 的工具配置文件（通常为 `tools.yaml` 或 `config.yaml`）中添加：
+
+```yaml
+tools:
+  - name: bible_search
+    description: "中文圣经和合本查询工具。支持按卷名查询经文、全文关键词搜索。"
+    command: "python3"
+    args:
+      - "/usr/local/share/bible-txt-file/bible_search.py"
+    parameters:
+      - name: action
+        type: string
+        description: "操作类型：list(列书卷), info(卷信息), read(读经文), search(搜索)"
+        required: true
+      - name: book
+        type: string
+        description: "书卷名或简称（如：创世记、创、Genesis）"
+        required: false
+      - name: chapter
+        type: integer
+        description: "章号"
+        required: false
+      - name: verse
+        type: string
+        description: "节号或节范围（如：1 或 1-5）"
+        required: false
+      - name: keyword
+        type: string
+        description: "搜索关键词"
+        required: false
+```
+
+3. 重启 OpenClaw 后即可使用：
+
+```
+请帮我查约翰福音3章16节的经文
+```
+
+**方式二：通过 MCP Server 集成**
+
+如果你更倾向于 MCP 方式，可以创建一个简单的 MCP Server 包装器：
+
+1. 创建文件 `/usr/local/share/bible-txt-file/bible_mcp_server.py`：
+
+```python
+#!/usr/bin/env python3
+"""Bible Search MCP Server for OpenClaw"""
+import json
+import sys
+import subprocess
+
+def handle_request(request):
+    method = request.get("method", "")
+    params = request.get("params", {})
+
+    if method == "tools/list":
+        return {
+            "tools": [{
+                "name": "bible_search",
+                "description": "中文圣经和合本查询工具",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "action": {"type": "string", "enum": ["list", "info", "read", "search"]},
+                        "book": {"type": "string"},
+                        "chapter": {"type": "integer"},
+                        "verse": {"type": "string"},
+                        "keyword": {"type": "string"}
+                    },
+                    "required": ["action"]
+                }
+            }]
+        }
+    elif method == "tools/call":
+        args = params.get("arguments", {})
+        cmd = ["python3", "/usr/local/share/bible-txt-file/bible_search.py"]
+        action = args.get("action", "")
+        cmd.append(action)
+        if action == "info":
+            cmd.append(args.get("book", ""))
+        elif action == "read":
+            cmd.append(args.get("book", ""))
+            cmd.append(str(args.get("chapter", "")))
+            if args.get("verse"):
+                cmd.append(str(args["verse"]))
+        elif action == "search":
+            cmd.append(args.get("keyword", ""))
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        return {"content": [{"type": "text", "text": result.stdout or result.stderr}]}
+
+for line in sys.stdin:
+    try:
+        request = json.loads(line)
+        response = {"jsonrpc": "2.0", "id": request.get("id"), "result": handle_request(request)}
+    except Exception as e:
+        response = {"jsonrpc": "2.0", "id": None, "error": {"code": -1, "message": str(e)}}
+    print(json.dumps(response), flush=True)
+```
+
+2. 在 OpenClaw 配置中注册 MCP Server：
+
+```yaml
+mcp_servers:
+  - name: bible-search
+    command: "python3"
+    args: ["/usr/local/share/bible-txt-file/bible_mcp_server.py"]
+    transport: stdio
+```
+
+3. 重启 OpenClaw，AI 即可通过 MCP 协议调用圣经查询功能。
+
+> **提示**：方式一配置更简单，适合快速上手；方式二更规范，适合需要多 Agent 共享工具的场景。请根据实际需求选择。
 
 ---
 
