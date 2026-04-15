@@ -17,6 +17,7 @@
   - [方式一：一键安装（推荐）](#方式一一键安装推荐)
   - [方式二：手动安装](#方式二手动安装)
   - [方式三：克隆本仓库](#方式三克隆本仓库)
+  - [方式四：通过 skills.sh 安装](#方式四通过-skillssh-安装)
 - [使用方法](#使用方法)
   - [列出全部 66 卷](#1-列出全部-66-卷)
   - [查看某卷信息](#2-查看某卷信息章数节数)
@@ -193,6 +194,25 @@ tar xzf assets/bible-txt-file.tar.gz -C ~/bible-data --strip-components=1
 # 修改 scripts/bible_search.py 中的 BIBLE_DIR 路径后即可使用
 python3 scripts/bible_search.py 创 1:1
 ```
+
+---
+
+### 方式四：通过 skills.sh 安装
+
+如果你使用支持 [skills.sh](https://skills.sh) 的 AI Agent（如 Claude Code、Cline、Cursor 等），可以通过一条命令安装：
+
+```bash
+npx skills add dockercore/bible-skill
+```
+
+安装完成后，AI Agent 会自动识别圣经查询技能，你可以直接用自然语言提问：
+
+```
+帮我查一下约翰福音3章16节
+搜索圣经中关于"恩典"的经文
+```
+
+> **提示**：此方式需要先确保 Python 3 已安装，且安装后需运行 `bash scripts/install.sh` 解压圣经数据。详见 [skills.sh](https://skills.sh) 文档。
 
 ---
 
