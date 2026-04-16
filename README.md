@@ -33,6 +33,8 @@
   - [Hermes Agent](#hermes-agent)
   - [OpenClaw](#openclaw)
 - [常见问题](#常见问题)
+- [⚖️ 免责声明](#️-免责声明)
+- [🙏 致谢](#-致谢)
 - [⭐ Star History](#-star-history)
 - [开源协议](#开源协议)
 
@@ -707,6 +709,27 @@ chmod +x scripts/bible_search.py
 ### Q: 搜索结果不够多
 
 搜索默认最多返回 20 条。打开 `scripts/bible_search.py`，找到 `search_bible(keyword, max_results=20)`，将 `20` 改为你需要的数字。
+
+---
+
+## ⚖️ 免责声明
+
+- 本项目所使用的圣经文本为**中文和合本（CUV）**，属于公共领域版本，仅供个人学习、研究及参考之用。
+- 圣经文本内容以"原样"提供，项目作者不对文本的完整性、准确性或适用性作任何明示或暗示的保证。
+- 如用于教会崇拜、正式宗教仪式或学术引用，请以官方出版的纸质圣经为准。
+- 本项目与任何宗教组织、出版机构无关联，不代表任何宗派立场。
+- 用户在使用本项目时应遵守所在国家/地区的相关法律法规。
+
+---
+
+## 🙏 致谢
+
+- 感谢 **中文和合本圣经** 的翻译先驱们，他们的卓越工作使中文读者能够阅读神的话语。
+- 感谢所有为本项目点亮 ⭐ Star 的朋友们，你们的支持是持续维护的动力。
+- 感谢开源社区提供的优秀工具和平台，包括 [GitHub](https://github.com)、[skills.sh](https://skills.sh)、[star-history.com](https://star-history.com) 等。
+- 感谢 [Hermes Agent](https://github.com/dockercore) 生态和所有 AI Agent 开发者的反馈与建议。
+
+> *"你的话是我脚前的灯，是我路上的光。"* —— 诗篇 119:105
 
 ---
 
