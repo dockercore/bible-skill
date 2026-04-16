@@ -33,6 +33,7 @@
   - [Hermes Agent](#hermes-agent)
   - [OpenClaw](#openclaw)
 - [常见问题](#常见问题)
+- [⭐ Star History](#-star-history)
 - [开源协议](#开源协议)
 
 ---
@@ -706,6 +707,12 @@ chmod +x scripts/bible_search.py
 ### Q: 搜索结果不够多
 
 搜索默认最多返回 20 条。打开 `scripts/bible_search.py`，找到 `search_bible(keyword, max_results=20)`，将 `20` 改为你需要的数字。
+
+---
+
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=dockercore/bible-skill&type=Date)](https://star-history.com/#dockercore/bible-skill&Date)
 
 ---
 
